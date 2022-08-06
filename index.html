@@ -686,6 +686,25 @@
             });
         }
         loadSkyBlockItems();
+
+        function isValidSelection(datalistID, selectedvalue) {
+            var options = document.getElementById(datalistID).children;
+            for (var i = 0; i < options.length; i++) {
+                if (options[i].value === selectedvalue) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function getUpgradedItemRarity(itemName) {
+            if (itemName[0] !== "&" || itemName.length < 2) {
+                return itemName;
+            }
+            const rarityOrder = "curelmdsvx";
+            return itemName[0] + rarityOrder[rarityOrder.indexOf(itemName[1]) + 1] + itemName.slice(2);
+        }
+
         const button = document.getElementById("submit-button");
         button.addEventListener("click", function(event) {
             document.getElementById("status").innerHTML = "";
@@ -709,7 +728,8 @@
             const name = document.getElementById("name").value;
             if (name === "") {
                 document.getElementById("status").innerHTML = "'Setup Name' is missing!";
-                return;
+                // TODO uncomment (is just disabled for debugging)
+                // return;
             }
             result += "%22name%22%3A+"; // "name": 
             result += "%22" + encodeURIComponent(name) + "%22"; // "value"
@@ -717,35 +737,54 @@
 
             // TODO build and validate the data for submission
             // encodeURIComponent(JSON.stringify(result).slice(1, -1)),
-            
-            const helmet = document.getElementById("helmet").value;
-            result += "%22helmet%22%3A+";
-            result += "%22%22";
-            result += "%2C%0D%0A";
+
+            var helmet = document.getElementById("helmet").value;
+            const helmet_reforge = document.getElementById("helmet_reforge").value;
+            const helmet_upgrades = document.getElementById("helmet_upgrades").value;
+            const helmet_recombobulated = document.getElementById("helmet_recombobulated").checked;
+            if (helmet === "") {
+                // no helmet, no problem
+            } else if (!isValidSelection("helmets_list", helmet)) {
+                document.getElementById("status").innerHTML = "'Helmet' is invalid!";
+                return;
+            } else if (!isValidSelection("armor_reforge_list", helmet_reforge)) {
+                document.getElementById("status").innerHTML = "'Helmet Reforge' is invalid!";
+                return;
+            } else {
+                if (helmet_reforge !== "") {
+                    helmet = (helmet[0] === "&" ? (helmet[0] + helmet[1]) : "") + helmet_reforge + " " + (helmet[0] === "&" ? helmet.slice(2) : helmet)
+                }
+                if (helmet_recombobulated) {
+                    helmet = getUpgradedItemRarity(helmet);
+                }
+                result += "%22helmet%22%3A+";
+                result += "%22" + encodeURIComponent(helmet) + "%22";
+                result += "%2C%0D%0A";
+            }
 
             const chestplate = document.getElementById("chestplate").value;
             result += "%22chestplate%22%3A+";
-            result += "%22%22";
+            result += "%22" + encodeURIComponent(chestplate) + "%22";
             result += "%2C%0D%0A";
 
             const leggings = document.getElementById("leggings").value;
             result += "%22leggings%22%3A+";
-            result += "%22%22";
+            result += "%22" + encodeURIComponent(leggings) + "%22";
             result += "%2C%0D%0A";
 
             const boots = document.getElementById("boots").value;
             result += "%22boots%22%3A+";
-            result += "%22%22";
+            result += "%22" + encodeURIComponent(boots) + "%22";
             result += "%2C%0D%0A";
 
             const pet = document.getElementById("pet").value;
             result += "%22pet%22%3A+";
-            result += "%22%22";
+            result += "%22" + encodeURIComponent(pet) + "%22";
             result += "%2C%0D%0A";
 
             const main_weapon = document.getElementById("main_weapon").value;
             result += "%22main_weapon%22%3A+";
-            result += "%22%22";
+            result += "%22" + encodeURIComponent(main_weapon) + "%22";
             result += "%2C%0D%0A";
 
             const min_skill1 = document.getElementById("min_skill1").value;
@@ -754,10 +793,10 @@
             const min_skill4 = document.getElementById("min_skill4").value;
             result += "%22min_skills%22%3A+";
             result += "%5B";
-            result += "%22%22%2C";
-            result += "%22%22%2C";
-            result += "%22%22%2C";
-            result += "%22%22";
+            result += "%22" + encodeURIComponent(min_skill1) + "%22%2C";
+            result += "%22" + encodeURIComponent(min_skill2) + "%22%2C";
+            result += "%22" + encodeURIComponent(min_skill3) + "%22%2C";
+            result += "%22" + encodeURIComponent(min_skill4) + "%22";
             result += "%5D%2C%0D%0A";
 
             const ability_item1 = document.getElementById("ability_item1").value;
@@ -766,20 +805,20 @@
             const ability_item4 = document.getElementById("ability_item4").value;
             result += "%22ability_items%22%3A+";
             result += "%5B";
-            result += "%22%22%2C";
-            result += "%22%22%2C";
-            result += "%22%22%2C";
-            result += "%22%22";
+            result += "%22" + encodeURIComponent(ability_item1) + "%22%2C";
+            result += "%22" + encodeURIComponent(ability_item2) + "%22%2C";
+            result += "%22" + encodeURIComponent(ability_item3) + "%22%2C";
+            result += "%22" + encodeURIComponent(ability_item4) + "%22";
             result += "%5D%2C%0D%0A";
 
             const income = document.getElementById("income").value;
             result += "%22income%22%3A+";
-            result += "%22%22";
+            result += "%22" + encodeURIComponent(income) + "%22";
             result += "%2C%0D%0A";
 
             const cost = document.getElementById("cost").value;
             result += "%22cost%22%3A+";
-            result += "%22%22";
+            result += "%22" + encodeURIComponent(cost) + "%22";
             result += "%2C";
 
 
@@ -789,17 +828,13 @@
                 "entry.667247848": result,
                 "entry.1992162842": encodeURIComponent(document.getElementById("notes").value),
             };
-            fetch(path + Object.entries(params).map(kv => kv.join("=")).join("&"), {
-                method: "POST",
-                mode: "cors"
-            }).finally(() => {
-                alert("Thank you for your submission!");
-                // button.disabled = false;
-                // clearTimeout(timeout_id);
-                // clearInterval(cooldown_id);
-                // const submit_data_cooldown = document.getElementById("submit-button");
-                // submit_data_cooldown.innerHTML = "Send Data to Google Forms";
-            });
+            // TODO uncomment (is just disabled for debugging)
+            // fetch(path + Object.entries(params).map(kv => kv.join("=")).join("&"), {
+            //     method: "POST",
+            //     mode: "cors"
+            // }).finally(() => {
+            //     alert("Thank you for your submission!");
+            // });
         });
     </script>
 </body></html>
