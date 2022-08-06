@@ -24,41 +24,47 @@
     <!-- form -->
     <div class="user-form">
         <h3>Minecraft Username</h3>
-        <input id="username" placeholder="Username" /><br>
+        <input id="username" type="text" placeholder="Username" /><br>
         <h3>Setup Name</h3>
-        <input id="name" placeholder="Setup Name" /><br>
+        <input id="name" type="text" placeholder="Setup Name" /><br>
         <h3>Armor</h3>
         <input id="helmet_reforge" placeholder="Reforge" list="armor_reforge_list" />
         <input id="helmet" placeholder="Helmet" list="helmets_list" />
         <input id="helmet_upgrades" placeholder="Stars / Kills" list="upgrades_list" />
-        <input id="helmet_recombobulated" placeholder="Recombobulated?" list="recombobulated_list" /><br>
+        <input id="helmet_recombobulated" type="checkbox" /><label for="helmet_recombobulated">Rarity Upgrade</label><br>
 
         <input id="chestplate_reforge" placeholder="Reforge" list="armor_reforge_list" />
         <input id="chestplate" placeholder="Chestplate" list="chestplates_list" />
         <input id="chestplate_upgrades" placeholder="Stars / Kills" list="upgrades_list" />
-        <input id="chestplate_recombobulated" placeholder="Recombobulated?" list="recombobulated_list" /><br>
+        <input id="chestplate_recombobulated" type="checkbox" /><label for="chestplate_recombobulated">Rarity Upgrade</label><br>
 
         <input id="leggings_reforge" placeholder="Reforge" list="armor_reforge_list" />
         <input id="leggings" placeholder="Leggings" list="leggings_list" />
         <input id="leggings_upgrades" placeholder="Stars / Kills" list="upgrades_list" />
-        <input id="leggings_recombobulated" placeholder="Recombobulated?" list="recombobulated_list" /><br>
+        <input id="leggings_recombobulated" type="checkbox" /><label for="leggings_recombobulated">Rarity Upgrade</label><br>
 
         <input id="boots_reforge" placeholder="Reforge" list="armor_reforge_list" />
         <input id="boots" placeholder="Boots" list="boots_list" />
-        <input id="helmet_upgrades" placeholder="Stars / Kills" list="upgrades_list" />
-        <input id="boots_recombobulated" placeholder="Recombobulated?" list="recombobulated_list" /><br>
+        <input id="boots_upgrades" placeholder="Stars / Kills" list="upgrades_list" />
+        <input id="boots_recombobulated" type="checkbox" /><label for="boots_recombobulated">Rarity Upgrade</label><br>
         <h3>Pet</h3>
+        <input id="pet_rarity" placeholder="Rarity" list="pet_rarity_list" />
+        <input id="pet_level" type="number" placeholder="Level" />
         <input id="pet" placeholder="Pet" list="pets_list" /><br>
         <h3>Main Weapon</h3>
         <input id="main_weapon_reforge" placeholder="Reforge" list="weapon_reforge_list" />
         <input id="main_weapon" placeholder="Main Weapon" list="weapons_list" />
         <input id="main_weapon_upgrades" placeholder="Stars / Kills" list="upgrades_list" />
-        <input id="main_weapon_recombobulated" placeholder="Recombobulated?" list="recombobulated_list" /><br>
+        <input id="main_weapon_recombobulated" type="checkbox" /><label for="main_weapon_recombobulated">Rarity Upgrade</label><br>
         <h3>Skill Requirements</h3>
-        <input id="min_skill1" placeholder="Skill Requirement" list="min_skills_list" /><br>
-        <input id="min_skill2" placeholder="Skill Requirement" list="min_skills_list" /><br>
-        <input id="min_skill3" placeholder="Skill Requirement" list="min_skills_list" /><br>
-        <input id="min_skill4" placeholder="Skill Requirement" list="min_skills_list" /><br>
+        <input id="min_skill1" placeholder="Category" list="min_skills_list" />
+        <input id="min_skill1_level" placeholder="Level / Amount" /><br>
+        <input id="min_skill2" placeholder="Category" list="min_skills_list" />
+        <input id="min_skill2_level" placeholder="Level / Amount" /><br>
+        <input id="min_skill3" placeholder="Category" list="min_skills_list" />
+        <input id="min_skill3_level" placeholder="Level / Amount" /><br>
+        <input id="min_skill4" placeholder="Category" list="min_skills_list" />
+        <input id="min_skill4_level" placeholder="Level / Amount" /><br>
         <h3>Ability Items</h3>
         <input id="ability_item1" placeholder="Ability Item" list="ability_item_list" /><br>
         <input id="ability_item2" placeholder="Ability Item" list="ability_item_list" /><br>
@@ -74,18 +80,56 @@
     </div>
 
     <!-- data lists -->
+    <!-- TODO add helmets_list -->
     <datalist id="helmets_list"></datalist>
+    <!-- TODO add chestplates_list -->
     <datalist id="chestplates_list"></datalist>
+    <!-- TODO add leggings_list -->
     <datalist id="leggings_list"></datalist>
+    <!-- TODO add boots_list -->
     <datalist id="boots_list"></datalist>
+    <!-- TODO add pets_list -->
     <datalist id="pets_list"></datalist>
+    <datalist id="pet_rarity_list">
+        <option>Common</option>
+        <option>Uncommon</option>
+        <option>Rare</option>
+        <option>Epic</option>
+        <option>Legendary</option>
+        <option>Mythic</option>
+    </datalist>
+    <!-- TODO add weapons_list -->
     <datalist id="weapons_list"></datalist>
+    <!-- TODO add ability_item_list -->
     <datalist id="ability_item_list"></datalist>
     <datalist id="min_skills_list">
         <option>Fairy Souls</option>
         <option>Skill Average</option>
+        <option>Magical Power</option>
+        <option>HotM</option>
+        <option>Bank Coins</option>
+        <option>Zombie Slayer</option>
+        <option>Spider Slayer</option>
+        <option>Wolf Slayer</option>
+        <option>Enderman Slayer</option>
+        <option>Blaze Slayer</option>
+        <option>Catacombs</option>
+        <option>Healer</option>
+        <option>Mage</option>
+        <option>Berserk</option>
+        <option>Archer</option>
+        <option>Tank</option>
+        <option>Farming</option>
+        <option>Mining</option>
+        <option>Combat</option>
+        <option>Foraging</option>
+        <option>Fishing</option>
+        <option>Enchanting</option>
+        <option>Alchemy</option>
     </datalist>
+    <!-- TODO add armor_reforge_list -->
     <datalist id="armor_reforge_list"></datalist>
+    <!-- TODO add armor_reforge_list -->
     <datalist id="weapon_reforge_list"></datalist>
     <datalist id="upgrades_list">
         <option></option>
@@ -105,10 +149,6 @@
         <option>14✪</option>
         <option>15✪</option>
     </datalist>
-    <datalist id="recombobulated_list">
-        <option>Yes</option>
-        <option>No</option>
-    </datalist>
 
     <!-- button -->
     <br><br><br>
@@ -118,244 +158,258 @@
     <script>
         // TODO get all hypixel items and categorize those and add them to the datalists
 
-        const pet_data = {
-            ARMADILLO: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            BAT: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary", "mythic"],
-                maxLevel: 100,
-            },
-            BLAZE: {
-                rarities: ["epic", "legendary"],
-                maxLevel: 100,
-            },
-            CHICKEN: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            HORSE: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            JERRY: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary", "mythic"],
-                maxLevel: 100,
-            },
-            OCELOT: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            PIGMAN: {
-                rarities: ["epic", "legendary"],
-                maxLevel: 100,
-            },
-            RABBIT: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            SHEEP: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            SILVERFISH: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            WITHER_SKELETON: {
-                rarities: ["epic", "legendary"],
-                maxLevel: 100,
-            },
-            SKELETON_HORSE: {
-                rarities: ["legendary"],
-                maxLevel: 100,
-            },
-            WOLF: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            ENDERMAN: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary", "mythic"],
-                maxLevel: 100,
-            },
-            PHOENIX: {
-                rarities: ["epic", "legendary"],
-                maxLevel: 100,
-            },
-            MAGMA_CUBE: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            FLYING_FISH: {
-                rarities: ["rare", "epic", "legendary", "mythic"],
-                maxLevel: 100,
-            },
-            BLUE_WHALE: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            TIGER: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            LION: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            PARROT: {
-                rarities: ["epic", "legendary"],
-                maxLevel: 100,
-            },
-            SNOWMAN: {
-                rarities: ["legendary"],
-                maxLevel: 100,
-            },
-            TURTLE: {
-                rarities: ["epic", "legendary"],
-                maxLevel: 100,
-            },
-            BEE: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            ENDER_DRAGON: {
-                rarities: ["epic", "legendary"],
-                maxLevel: 100,
-            },
-            GUARDIAN: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            SQUID: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            GIRAFFE: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            ELEPHANT: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            MONKEY: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            SPIDER: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            ENDERMITE: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            GHOUL: {
-                rarities: ["epic", "legendary"],
-                maxLevel: 100,
-            },
-            JELLYFISH: {
-                rarities: ["epic", "legendary"],
-                maxLevel: 100,
-            },
-            PIG: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            ROCK: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            SKELETON: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            ZOMBIE: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            DOLPHIN: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            BABY_YETI: {
-                rarities: ["epic", "legendary"],
-                maxLevel: 100,
-            },
-            MEGALODON: {
-                rarities: ["epic", "legendary"],
-                maxLevel: 100,
-            },
-            GOLEM: {
-                rarities: ["epic", "legendary"],
-                maxLevel: 100,
-            },
-            HOUND: {
-                rarities: ["epic", "legendary"],
-                maxLevel: 100,
-            },
-            TARANTULA: {
-                rarities: ["epic", "legendary"],
-                maxLevel: 100,
-            },
-            BLACK_CAT: {
-                rarities: ["legendary"],
-                maxLevel: 100,
-            },
-            SPIRIT: {
-                rarities: ["epic", "legendary"],
-                maxLevel: 100,
-            },
-            GRIFFIN: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            MITHRIL_GOLEM: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            GRANDMA_WOLF: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            RAT: {
-                rarities: ["legendary", "mythic"],
-                maxLevel: 100,
-            },
-            BAL: {
-                rarities: ["epic", "legendary"],
-                maxLevel: 100,
-            },
-            SCATHA: {
-                rarities: ["rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            GOLDEN_DRAGON: {
-                rarities: ["legendary"],
-                maxLevel: 200,
-            },
-            AMMONITE: {
-                rarities: ["legendary"],
-                maxLevel: 100,
-            },
-            MOOSHROOM_COW: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            SNAIL: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            KUUDRA: {
-                rarities: ["common", "uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-            WISP: {
-                rarities: ["uncommon", "rare", "epic", "legendary"],
-                maxLevel: 100,
-            },
-        };
+        const pet_data = [{
+            id: "ARMADILLO",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "BAT",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary", "mythic"],
+            maxLevel: 100,
+        }, {
+            id: "BLAZE",
+            rarities: ["epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "CHICKEN",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "HORSE",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "JERRY",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary", "mythic"],
+            maxLevel: 100,
+        }, {
+            id: "OCELOT",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "PIGMAN",
+            rarities: ["epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "RABBIT",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "SHEEP",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "SILVERFISH",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "WITHER_SKELETON",
+            rarities: ["epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "SKELETON_HORSE",
+            rarities: ["legendary"],
+            maxLevel: 100,
+        }, {
+            id: "WOLF",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "ENDERMAN",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary", "mythic"],
+            maxLevel: 100,
+        }, {
+            id: "PHOENIX",
+            rarities: ["epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "MAGMA_CUBE",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "FLYING_FISH",
+            rarities: ["rare", "epic", "legendary", "mythic"],
+            maxLevel: 100,
+        }, {
+            id: "BLUE_WHALE",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "TIGER",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "LION",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "PARROT",
+            rarities: ["epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "SNOWMAN",
+            rarities: ["legendary"],
+            maxLevel: 100,
+        }, {
+            id: "TURTLE",
+            rarities: ["epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "BEE",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "ENDER_DRAGON",
+            rarities: ["epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "GUARDIAN",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "SQUID",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "GIRAFFE",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "ELEPHANT",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "MONKEY",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "SPIDER",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "ENDERMITE",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "GHOUL",
+            rarities: ["epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "JELLYFISH",
+            rarities: ["epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "PIG",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "ROCK",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "SKELETON",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "ZOMBIE",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "DOLPHIN",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "BABY_YETI",
+            rarities: ["epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "MEGALODON",
+            rarities: ["epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "GOLEM",
+            rarities: ["epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "HOUND",
+            rarities: ["epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "TARANTULA",
+            rarities: ["epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "BLACK_CAT",
+            rarities: ["legendary"],
+            maxLevel: 100,
+        }, {
+            id: "SPIRIT",
+            rarities: ["epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "GRIFFIN",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "MITHRIL_GOLEM",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "GRANDMA_WOLF",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "RAT",
+            rarities: ["legendary", "mythic"],
+            maxLevel: 100,
+        }, {
+            id: "BAL",
+            rarities: ["epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "SCATHA",
+            rarities: ["rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "GOLDEN_DRAGON",
+            rarities: ["legendary"],
+            maxLevel: 200,
+        }, {
+            id: "AMMONITE",
+            rarities: ["legendary"],
+            maxLevel: 100,
+        }, {
+            id: "MOOSHROOM_COW",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "SNAIL",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "KUUDRA",
+            rarities: ["common", "uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, {
+            id: "WISP",
+            rarities: ["uncommon", "rare", "epic", "legendary"],
+            maxLevel: 100,
+        }, ];
+
+        var pet_rarity_hashmap = {};
+        var pet_maxlevel_hashmap = {};
+
+        const tmp_list = document.getElementById("pets_list");
+        pet_data.forEach(function(item) {
+            var option = document.createElement('option');
+            var pet_name = item.id.replace(/_/, " ").split(' ')
+                .map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase())
+                .join(' ');
+            option.value = pet_name;
+            pet_rarity_hashmap[pet_name] = item.rarities;
+            pet_maxlevel_hashmap[pet_name] = item.maxLevel;
+            tmp_list.appendChild(option);
+        });
 
         // https://api.hypixel.net/resources/skyblock/items
 
