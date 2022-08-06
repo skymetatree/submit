@@ -657,19 +657,19 @@
                 const name = getItemTier(item.tier) + item.name;
                 const category = item.category;
                 if (category === "HELMET") {
-                    addToDatalist("helmets_list", name);
+                    addToDatalist("helmets_list", name.replace(/( Helmet)|(Helmet of the )|(Helmet of )|( -)|(Helmet Of )/, ""));
                     skyblock_helmets.push(item);
                 }
                 if (category === "CHESTPLATE") {
-                    addToDatalist("chestplates_list", name);
+                    addToDatalist("chestplates_list", name.replace(/( Chestplate)|(Chestplate of the )|(Chestplate of )|( -)|(Chestplate Of )/, ""));
                     skyblock_chestplates.push(item);
                 }
                 if (category === "LEGGINGS") {
-                    addToDatalist("leggings_list", name);
+                    addToDatalist("leggings_list", name.replace(/( Leggings)|(Leggings of the )|(Leggings of )|( -)|(Leggings Of )/, ""));
                     skyblock_leggings.push(item);
                 }
                 if (category === "BOOTS") {
-                    addToDatalist("boots_list", name);
+                    addToDatalist("boots_list", name.replace(/( Boots)|(Boots of the )|(Boots of )|( -)|(Boots Of )/, ""));
                     skyblock_boots.push(item);
                 }
                 if (category === "SWORD" || category === "BOW" || category === "FISHING_WEAPON" || category === "LONGSWORD") {
@@ -735,9 +735,6 @@
             result += "%22" + encodeURIComponent(name) + "%22"; // "value"
             result += "%2C%0D%0A"; // ,\r\n
 
-            // TODO build and validate the data for submission
-            // encodeURIComponent(JSON.stringify(result).slice(1, -1)),
-
             var helmet = document.getElementById("helmet").value;
             const helmet_reforge = document.getElementById("helmet_reforge").value;
             const helmet_upgrades = document.getElementById("helmet_upgrades").value;
@@ -747,35 +744,104 @@
             } else if (!isValidSelection("helmets_list", helmet)) {
                 document.getElementById("status").innerHTML = "'Helmet' is invalid!";
                 return;
-            } else if (!isValidSelection("armor_reforge_list", helmet_reforge)) {
+            } else if (helmet_upgrades !== "" && !isValidSelection("armor_reforge_list", helmet_reforge)) {
                 document.getElementById("status").innerHTML = "'Helmet Reforge' is invalid!";
                 return;
             } else {
                 if (helmet_reforge !== "") {
-                    helmet = (helmet[0] === "&" ? (helmet[0] + helmet[1]) : "") + helmet_reforge + " " + (helmet[0] === "&" ? helmet.slice(2) : helmet)
+                    helmet = (helmet[0] === "&" ? (helmet[0] + helmet[1]) : "") + helmet_reforge + " " + (helmet[0] === "&" ? helmet.slice(2) : helmet);
                 }
                 if (helmet_recombobulated) {
                     helmet = getUpgradedItemRarity(helmet);
+                }
+                if (helmet_upgrades !== "") {
+                    helmet = helmet + " " + helmet_upgrades;
                 }
                 result += "%22helmet%22%3A+";
                 result += "%22" + encodeURIComponent(helmet) + "%22";
                 result += "%2C%0D%0A";
             }
+            var chestplate = document.getElementById("chestplate").value;
+            const chestplate_reforge = document.getElementById("chestplate_reforge").value;
+            const chestplate_upgrades = document.getElementById("chestplate_upgrades").value;
+            const chestplate_recombobulated = document.getElementById("chestplate_recombobulated").checked;
+            if (chestplate === "") {
+                // no chestplate, no problem
+            } else if (!isValidSelection("chestplates_list", chestplate)) {
+                document.getElementById("status").innerHTML = "'Chestplate' is invalid!";
+                return;
+            } else if (chestplate_upgrades !== "" && !isValidSelection("armor_reforge_list", chestplate_reforge)) {
+                document.getElementById("status").innerHTML = "'Chestplate Reforge' is invalid!";
+                return;
+            } else {
+                if (chestplate_reforge !== "") {
+                    chestplate = (chestplate[0] === "&" ? (chestplate[0] + chestplate[1]) : "") + chestplate_reforge + " " + (chestplate[0] === "&" ? chestplate.slice(2) : chestplate)
+                }
+                if (chestplate_recombobulated) {
+                    chestplate = getUpgradedItemRarity(chestplate);
+                }
+                if (chestplate_upgrades !== "") {
+                    chestplate = chestplate + " " + chestplate_upgrades;
+                }
+                result += "%22chestplate%22%3A+";
+                result += "%22" + encodeURIComponent(chestplate) + "%22";
+                result += "%2C%0D%0A";
+            }
+            var leggings = document.getElementById("leggings").value;
+            const leggings_reforge = document.getElementById("leggings_reforge").value;
+            const leggings_upgrades = document.getElementById("leggings_upgrades").value;
+            const leggings_recombobulated = document.getElementById("leggings_recombobulated").checked;
+            if (leggings === "") {
+                // no leggings, no problem
+            } else if (!isValidSelection("leggings_list", leggings)) {
+                document.getElementById("status").innerHTML = "'Chestplate' is invalid!";
+                return;
+            } else if (leggings_upgrades !== "" && !isValidSelection("armor_reforge_list", leggings_reforge)) {
+                document.getElementById("status").innerHTML = "'Chestplate Reforge' is invalid!";
+                return;
+            } else {
+                if (leggings_reforge !== "") {
+                    leggings = (leggings[0] === "&" ? (leggings[0] + leggings[1]) : "") + leggings_reforge + " " + (leggings[0] === "&" ? leggings.slice(2) : leggings)
+                }
+                if (leggings_recombobulated) {
+                    leggings = getUpgradedItemRarity(leggings);
+                }
+                if (leggings_upgrades !== "") {
+                    leggings = leggings + " " + leggings_upgrades;
+                }
+                result += "%22leggings%22%3A+";
+                result += "%22" + encodeURIComponent(leggings) + "%22";
+                result += "%2C%0D%0A";
+            }
+            var boots = document.getElementById("boots").value;
+            const boots_reforge = document.getElementById("boots_reforge").value;
+            const boots_upgrades = document.getElementById("boots_upgrades").value;
+            const boots_recombobulated = document.getElementById("boots_recombobulated").checked;
+            if (boots === "") {
+                // no boots, no problem
+            } else if (!isValidSelection("boots_list", boots)) {
+                document.getElementById("status").innerHTML = "'Chestplate' is invalid!";
+                return;
+            } else if (boots_upgrades !== "" && !isValidSelection("armor_reforge_list", boots_reforge)) {
+                document.getElementById("status").innerHTML = "'Chestplate Reforge' is invalid!";
+                return;
+            } else {
+                if (boots_reforge !== "") {
+                    boots = (boots[0] === "&" ? (boots[0] + boots[1]) : "") + boots_reforge + " " + (boots[0] === "&" ? boots.slice(2) : boots)
+                }
+                if (boots_recombobulated) {
+                    boots = getUpgradedItemRarity(boots);
+                }
+                if (boots_upgrades !== "") {
+                    boots = boots + " " + boots_upgrades;
+                }
+                result += "%22boots%22%3A+";
+                result += "%22" + encodeURIComponent(boots) + "%22";
+                result += "%2C%0D%0A";
+            }
 
-            const chestplate = document.getElementById("chestplate").value;
-            result += "%22chestplate%22%3A+";
-            result += "%22" + encodeURIComponent(chestplate) + "%22";
-            result += "%2C%0D%0A";
-
-            const leggings = document.getElementById("leggings").value;
-            result += "%22leggings%22%3A+";
-            result += "%22" + encodeURIComponent(leggings) + "%22";
-            result += "%2C%0D%0A";
-
-            const boots = document.getElementById("boots").value;
-            result += "%22boots%22%3A+";
-            result += "%22" + encodeURIComponent(boots) + "%22";
-            result += "%2C%0D%0A";
+            // TODO build and validate the data for submission
+            // encodeURIComponent(JSON.stringify(result).slice(1, -1)),
 
             const pet = document.getElementById("pet").value;
             result += "%22pet%22%3A+";
@@ -828,6 +894,8 @@
                 "entry.667247848": result,
                 "entry.1992162842": encodeURIComponent(document.getElementById("notes").value),
             };
+            
+            console.log(decodeURIComponent(result));
             // TODO uncomment (is just disabled for debugging)
             // fetch(path + Object.entries(params).map(kv => kv.join("=")).join("&"), {
             //     method: "POST",
