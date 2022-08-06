@@ -118,7 +118,33 @@
     <datalist id="min_skills_list">
         <option>Fairy Souls</option>
         <option>Skill Average</option>
-        <option>Magical Power</option>
+        <option>MP Lucky </option>
+        <option>MP Warrior </option>
+        <option>MP Pretty </option>
+        <option>MP Protected </option>
+        <option>MP Simple </option>
+        <option>MP Disciplined </option>
+        <option>MP Commando </option>
+        <option>MP Inspired </option>
+        <option>MP Prepared </option>
+        <option>MP Ominous </option>
+        <option>MP Silky </option>
+        <option>MP Sweet </option>
+        <option>MP Bloody </option>
+        <option>MP Itchy </option>
+        <option>MP Sighted </option>
+        <option>MP Adept </option>
+        <option>MP Mythical </option>
+        <option>MP Forceful </option>
+        <option>MP Shaded </option>
+        <option>MP Strong </option>
+        <option>MP Demonic </option>
+        <option>MP Pleasant </option>
+        <option>MP Hurtful </option>
+        <option>MP Bizarre </option>
+        <option>MP Healthy </option>
+        <option>MP Slender </option>
+        <option>MP Scorching </option>
         <option>HotM</option>
         <option>Bank Coins</option>
         <option>Zombie Slayer</option>
@@ -480,52 +506,73 @@
             event.preventDefault();
 
             // TODO build the submitted text
+            // encodeURIComponent(JSON.stringify(result).slice(1, -1)),
 
-            var result = "\"name\": \"";
-            result += "";
-            result += "\",\n";
-            result += "\"helmet\": \"";
-            result += "";
-            result += "\",\n";
-            result += "\"chestplate\": \"";
-            result += "";
-            result += "\",\n";
-            result += "\"leggings\": \"";
-            result += "";
-            result += "\",\n";
-            result += "\"boots\": \"";
-            result += "";
-            result += "\",\n";
-            result += "\"pet\": \"";
-            result += "";
-            result += "\",\n";
-            result += "\"main_weapon\": \"";
-            result += "";
-            result += "\",\n";
-            result += "\"min_skills\": [\"";
-            result += "";
-            result += "\"],\n";
-            result += "\"ability_items\": [\"";
-            result += "";
-            result += "\"],\n";
-            result += "\"income\": \"";
-            result += "";
-            result += "\",\n";
-            result += "\"cost\": \"";
-            result += "";
-            result += "\",\n";
+            var result = "";
+            
+            result += "%22name%22%3A+"; // "name": 
+            result += "%22%22"; // ""
+            result += "%2C%0D%0A"; // ,\r\n
+
+            result += "%22helmet%22%3A+";
+            result += "%22%22";
+            result += "%2C%0D%0A";
+
+            result += "%22chestplate%22%3A+";
+            result += "%22%22";
+            result += "%2C%0D%0A";
+
+            result += "%22leggings%22%3A+";
+            result += "%22%22";
+            result += "%2C%0D%0A";
+
+            result += "%22boots%22%3A+";
+            result += "%22%22";
+            result += "%2C%0D%0A";
+
+            result += "%22pet%22%3A+";
+            result += "%22%22";
+            result += "%2C%0D%0A";
+
+            result += "%22main_weapon%22%3A+";
+            result += "%22%22";
+            result += "%2C%0D%0A";
+
+            result += "%22min_skills%22%3A+";
+            result += "%5B";
+            result += "%22%22%2C";
+            result += "%22%22%2C";
+            result += "%22%22%2C";
+            result += "%22%22";
+            result += "%5D%2C%0D%0A";
+
+            result += "%22ability_items%22%3A+";
+            result += "%5B";
+            result += "%22%22%2C";
+            result += "%22%22%2C";
+            result += "%22%22%2C";
+            result += "%22%22";
+            result += "%5D%2C%0D%0A";
+
+            result += "%22income%22%3A+";
+            result += "%22%22";
+            result += "%2C%0D%0A";
+
+            result += "%22cost%22%3A+";
+            result += "%22%22";
+            result += "%2C";
 
             // TODO check if valid. only then continue
 
             const path = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfo_YODrIHaz29amZ5XmvMlYEG-SZmbFsSBP9r2UJhgp4Ow5w/formResponse?";
             const params = {
-                usp: "pp_url",
-                "entry.640704899": document.getElementById("username").value,
+                "entry.640704899": encodeURIComponent(document.getElementById("username").value),
                 "entry.667247848": result,
-                "entry.1992162842": document.getElementById("notes").value,
+                "entry.1992162842": encodeURIComponent(document.getElementById("notes").value),
             };
             button.disabled = true;
             fetch(path + Object.entries(params).map(kv => kv.join("=")).join("&"), {
+                method: "POST",
                 mode: "cors"
             }).finally(() => {
                 alert("Thank you for your submission!");
