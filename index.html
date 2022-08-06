@@ -201,7 +201,6 @@
         <option>Not So</option>
         <option>Thicc</option>
         <option>Absolutely</option>
-        <option>Even More</option>
     </datalist>
     <datalist id="sword_reforge_list">
         <!-- swords and fishing rods -->
@@ -238,6 +237,19 @@
         <option>Gilded</option>
         <option>Warped</option>
         <option>Bulky</option>
+        <!-- bow -->
+        <option>Deadly</option>
+        <option>Fine</option>
+        <option>Grand</option>
+        <option>Hasty</option>
+        <option>Neat</option>
+        <option>Rapid</option>
+        <option>Unreal</option>
+        <option>Awkward</option>
+        <option>Rich</option>
+        <option>Precise</option>
+        <option>Spiritual</option>
+        <option>Headstrong</option>
         <!-- fishing rods -->
         <option>Salty</option>
         <option>Treacherous</option>
@@ -274,6 +286,8 @@
         <option>Fleet</option>
         <option>Heated</option>
         <option>Ambered</option>
+        <!-- duplicate prefix replacements pickaxe / drill -->
+        <option>Even More</option>
         <!-- equipment -->
         <option>Waxed</option>
         <option>Fortified</option>
@@ -302,14 +316,13 @@
         <option>Giant</option>
         <option>Submerged</option>
         <option>Jaded</option>
-        <!-- duplicate prefix replacements -->
+        <!-- duplicate prefix replacements armor -->
         <option>Very</option>
         <option>Highly</option>
         <option>Extremely</option>
         <option>Not So</option>
         <option>Thicc</option>
         <option>Absolutely</option>
-        <option>Even More</option>
     </datalist>
     <datalist id="armor_upgrades_list">
         <option></option>
@@ -623,12 +636,12 @@
         }, ];
 
         var skyblock_pets = {};
-        var skyblock_helmets = [];
-        var skyblock_chestplates = [];
-        var skyblock_leggings = [];
-        var skyblock_boots = [];
-        var skyblock_weapons = [];
-        var skyblock_ability_items = [];
+        var skyblock_helmets = {};
+        var skyblock_chestplates = {};
+        var skyblock_leggings = {};
+        var skyblock_boots = {};
+        var skyblock_weapons = {};
+        var skyblock_ability_items = {};
 
         const tmp_list = document.getElementById("pets_list");
         pet_data.forEach(function(item) {
@@ -665,31 +678,35 @@
                 const name = getItemTier(item.tier) + item.name;
                 const category = item.category;
                 if (category === "HELMET") {
-                    addToDatalist("helmets_list", name.replace(/( Helmet)|(Helmet of the )|(Helmet of )|( -)|(Helmet Of )/, ""));
-                    skyblock_helmets.push(item);
+                    const tmp_name = name.replace(/( Helmet)|(Helmet of the )|(Helmet of )|( -)|(Helmet Of )/, "");
+                    addToDatalist("helmets_list", tmp_name);
+                    skyblock_helmets[tmp_name] = item;
                 }
                 if (category === "CHESTPLATE") {
-                    addToDatalist("chestplates_list", name.replace(/( Chestplate)|(Chestplate of the )|(Chestplate of )|( -)|(Chestplate Of )/, ""));
-                    skyblock_chestplates.push(item);
+                    const tmp_name = name.replace(/( Chestplate)|(Chestplate of the )|(Chestplate of )|( -)|(Chestplate Of )/, "");
+                    addToDatalist("chestplates_list", tmp_name);
+                    skyblock_chestplates[tmp_name] = item;
                 }
                 if (category === "LEGGINGS") {
-                    addToDatalist("leggings_list", name.replace(/( Leggings)|(Leggings of the )|(Leggings of )|( -)|(Leggings Of )/, ""));
-                    skyblock_leggings.push(item);
+                    const tmp_name = name.replace(/( Leggings)|(Leggings of the )|(Leggings of )|( -)|(Leggings Of )/, "");
+                    addToDatalist("leggings_list", tmp_name);
+                    skyblock_leggings[tmp_name] = item;
                 }
                 if (category === "BOOTS") {
-                    addToDatalist("boots_list", name.replace(/( Boots)|(Boots of the )|(Boots of )|( -)|(Boots Of )/, ""));
-                    skyblock_boots.push(item);
+                    const tmp_name = name.replace(/( Boots)|(Boots of the )|(Boots of )|( -)|(Boots Of )/, "");
+                    addToDatalist("boots_list", tmp_name);
+                    skyblock_boots[tmp_name] = item;
                 }
                 if (category === "SWORD" || category === "BOW" || category === "FISHING_WEAPON" || category === "LONGSWORD") {
-                    addToDatalist("weapons_list", name);
                     addToDatalist("ability_items_list", name);
-                    skyblock_weapons.push(item);
-                    skyblock_ability_items.push(item);
+                    skyblock_ability_items[name] = item;
                 }
                 if (category === "WAND" || category === "PICKAXE" || category === "AXE" || category === "HOE" ||
-                    category === "FISHING_ROD" || category === "DEPLOYABLE" || category === "DRILL" || category === "SPADE") {
+                    category === "FISHING_ROD" || category === "ACCESSORY" || category === "NECKLACE" ||
+                    category === "BELT" || category === "CLOAK" || category === "GAUNTLET" || category === "DEPLOYABLE" ||
+                    category === "DRILL" || category === "SPADE" || category === "SHEARS" || category === "GLOVES" || category === "BRACELET") {
                     addToDatalist("ability_items_list", name);
-                    skyblock_ability_items.push(item);
+                    skyblock_ability_items[name] = item;
                 }
             });
         }
@@ -711,6 +728,33 @@
             }
             const rarityOrder = "curelmdsvx";
             return itemName[0] + rarityOrder[rarityOrder.indexOf(itemName[1]) + 1] + itemName.slice(2);
+        }
+
+        // TODO implement isValidReforge
+        function isValidReforge(itemName, selectedReforge) {
+            const reforges = {
+                SWORD: ["Dirty", "Fabled", "Suspicious", "Gilded", "Warped", "Bulky", "Gentle", "Odd", "Fast", "Fair", "Epic", "Sharp", "Heroic", "Spicy", "Legendary"],
+                LONGSWORD: this.SWORD,
+                WAND: this.SWORD,
+                BOW: ["Deadly", "Fine", "Grand", "Hasty", "Neat", "Rapid", "Unreal", "Awkward", "Rich", "Precise", "Spiritual", "Headstrong"],
+                FISHING_ROD: ["Salty", "Treacherous", "Stiff", "Lucky", "Gentle", "Odd", "Fast", "Fair", "Epic", "Sharp", "Heroic", "Spicy", "Legendary"],
+                FISHING_WEAPON: this.FISHING_ROD,
+                AXE: ["Double-Bit", "Lumberjack's", "Great", "Rugged", "Lush", "Moil", "Toil", "Blessed"],
+                HOE: ["Green Thumb", "Peasant's", "Robust", "Zooming", "Bountiful", "Blessed"],
+                PICKAXE: ["Unyielding", "Prospector's", "Excellent", "Sturdy", "Fortunate", "Magnetic", "Fruitful", "Refined", "Stellar", "Mithraic", "Auspicious", "Fleet", "Heated", "Ambered", "Even More"],
+                DRILL: this.PICKAXE,
+                NECKLACE: ["Waxed", "Fortified", "Strengthened", "Glistening"],
+                GAUNTLET: this.NECKLACE,
+                CLOAK: this.NECKLACE,
+                BELT: this.NECKLACE,
+                BRACELET: this.NECKLACE,
+                GLOVES: this.NECKLACE,
+                ACCESSORY: [],
+                SPADE: [],
+                SHEARS: [],
+                DEPLOYABLE: [],
+            };
+            return reforges[skyblock_ability_items[itemName].category].includes(selectedReforge);
         }
 
         const button = document.getElementById("submit-button");
@@ -736,7 +780,7 @@
             const name = document.getElementById("name").value;
             if (name === "") {
                 document.getElementById("status").innerHTML = "'Setup Name' is missing!";
-                // TODO uncomment (is just disabled for debugging)
+                // NOTE uncomment (is just disabled for debugging)
                 // return;
             }
             result += "%22name%22%3A+"; // "name": 
@@ -848,9 +892,6 @@
                 result += "%2C%0D%0A";
             }
 
-            // TODO build and validate the data for submission
-            // encodeURIComponent(JSON.stringify(result).slice(1, -1)),
-
             var pet = document.getElementById("pet").value;
             const pet_rarity = document.getElementById("pet_rarity").value;
             const pet_level = document.getElementById("pet_level").value;
@@ -878,9 +919,34 @@
             }
 
             var main_weapon = document.getElementById("main_weapon").value;
-            result += "%22main_weapon%22%3A+";
-            result += "%22" + encodeURIComponent(main_weapon) + "%22";
-            result += "%2C%0D%0A";
+            const main_weapon_reforge = document.getElementById("main_weapon_reforge").value;
+            const main_weapon_upgrades = document.getElementById("main_weapon_upgrades").value;
+            const main_weapon_recombobulated = document.getElementById("main_weapon_recombobulated").checked;
+            if (main_weapon === "") {
+                // no main_weapon, no problem
+            } else if (!isValidSelection("ability_items_list", main_weapon)) {
+                document.getElementById("status").innerHTML = "'Main Weapon' is invalid!";
+                return;
+            } else if (main_weapon_reforge !== "" && !isValidReforge(main_weapon, main_weapon_reforge)) {
+                document.getElementById("status").innerHTML = "'Main Weapon Reforge' is invalid!";
+                return;
+            } else {
+                if (main_weapon_reforge !== "") {
+                    main_weapon = (main_weapon[0] === "&" ? (main_weapon[0] + main_weapon[1]) : "") + main_weapon_reforge + " " + (main_weapon[0] === "&" ? main_weapon.slice(2) : main_weapon)
+                }
+                if (main_weapon_recombobulated) {
+                    main_weapon = getUpgradedItemRarity(main_weapon);
+                }
+                if (main_weapon_upgrades !== "") {
+                    main_weapon = main_weapon + " " + main_weapon_upgrades;
+                }
+                result += "%22main_weapon%22%3A+";
+                result += "%22" + encodeURIComponent(main_weapon) + "%22";
+                result += "%2C%0D%0A";
+            }
+
+            // TODO build and validate the data for submission
+            // encodeURIComponent(JSON.stringify(result).slice(1, -1)),
 
             var min_skill1 = document.getElementById("min_skill1").value;
             var min_skill2 = document.getElementById("min_skill2").value;
@@ -925,7 +991,7 @@
             };
 
             console.log(decodeURIComponent(result));
-            // TODO uncomment (is just disabled for debugging)
+            // NOTE uncomment (is just disabled for debugging)
             // fetch(path + Object.entries(params).map(kv => kv.join("=")).join("&"), {
             //     method: "POST",
             //     mode: "cors"
