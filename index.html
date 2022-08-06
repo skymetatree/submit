@@ -23,7 +23,7 @@
 
     <!-- form -->
     <div class="user-form">
-        <h3>Minecraft Username</h3>
+        <h3>Minecraft Username [optional]</h3>
         <input id="username" type="text" placeholder="Username" /><br>
         <h3>Setup Name</h3>
         <input id="name" type="text" placeholder="Setup Name" /><br>
@@ -66,17 +66,31 @@
         <input id="min_skill4" placeholder="Category" list="min_skills_list" />
         <input id="min_skill4_level" placeholder="Level / Amount" /><br>
         <h3>Ability Items</h3>
-        <input id="ability_item1" placeholder="Ability Item" list="ability_item_list" /><br>
-        <input id="ability_item2" placeholder="Ability Item" list="ability_item_list" /><br>
-        <input id="ability_item3" placeholder="Ability Item" list="ability_item_list" /><br>
-        <input id="ability_item4" placeholder="Ability Item" list="ability_item_list" /><br>
+        <input id="ability_item1_reforge" placeholder="Reforge" list="weapon_reforge_list" />
+        <input id="ability_item1" placeholder="Ability Item" list="ability_item_list" />
+        <input id="ability_item1_upgrades" placeholder="Stars / Kills" list="upgrades_list" />
+        <input id="ability_item1_recombobulated" type="checkbox" /><label for="ability_item1_recombobulated">Rarity Upgrade</label><br>
+        <input id="ability_item2_reforge" placeholder="Reforge" list="weapon_reforge_list" />
+        <input id="ability_item2" placeholder="Ability Item" list="ability_item_list" />
+        <input id="ability_item2_upgrades" placeholder="Stars / Kills" list="upgrades_list" />
+        <input id="ability_item2_recombobulated" type="checkbox" /><label for="ability_item2_recombobulated">Rarity Upgrade</label><br>
+        <input id="ability_item3_reforge" placeholder="Reforge" list="weapon_reforge_list" />
+        <input id="ability_item3" placeholder="Ability Item" list="ability_item_list" />
+        <input id="ability_item3_upgrades" placeholder="Stars / Kills" list="upgrades_list" />
+        <input id="ability_item3_recombobulated" type="checkbox" /><label for="ability_item3_recombobulated">Rarity Upgrade</label><br>
+        <input id="ability_item4_reforge" placeholder="Reforge" list="weapon_reforge_list" />
+        <input id="ability_item4" placeholder="Ability Item" list="ability_item_list" />
+        <input id="ability_item4_upgrades" placeholder="Stars / Kills" list="upgrades_list" />
+        <input id="ability_item4_recombobulated" type="checkbox" /><label for="ability_item4_recombobulated">Rarity Upgrade</label><br>
         <h3>Hourly Income</h3>
         <input id="money" placeholder="Hourly Income" list="ability_item_list" /><br>
         <h3>Initial Setup Cost</h3>
         <input id="cost" placeholder="Initial Setup Cost" list="ability_item_list" /><br>
 
+        <hr>
         <h3>Submit Data</h3>
-        <button id="submit-button">Send</button><br>
+        <button id="submit-button">Send Data to Google Forms</button><br>
+        <hr>
     </div>
 
     <!-- data lists -->
@@ -150,14 +164,8 @@
         <option>15✪</option>
     </datalist>
 
-    <!-- button -->
-    <br><br><br>
-    <h3></h3>
-
     <!-- script -->
     <script>
-        // TODO get all hypixel items and categorize those and add them to the datalists
-
         const pet_data = [{
             id: "ARMADILLO",
             rarities: ["common", "uncommon", "rare", "epic", "legendary"],
