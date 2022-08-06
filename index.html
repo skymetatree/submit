@@ -25,6 +25,7 @@
     <div class="user-form">
         <h3>Minecraft Username [optional]</h3>
         <input id="username" type="text" placeholder="Username" /><br>
+        <hr>
         <h3>Setup Name</h3>
         <input id="name" type="text" placeholder="Setup Name" /><br>
         <h3>Armor</h3>
@@ -82,11 +83,16 @@
         <input id="ability_item4" placeholder="Ability Item" list="ability_item_list" />
         <input id="ability_item4_upgrades" placeholder="Stars / Kills" list="upgrades_list" />
         <input id="ability_item4_recombobulated" type="checkbox" /><label for="ability_item4_recombobulated">Rarity Upgrade</label><br>
+        <hr>
         <h3>Hourly Income</h3>
-        <input id="money" placeholder="Hourly Income" list="ability_item_list" /><br>
+        <input id="income" placeholder="Hourly Income" list="ability_item_list" /><br>
         <h3>Initial Setup Cost</h3>
         <input id="cost" placeholder="Initial Setup Cost" list="ability_item_list" /><br>
 
+        <hr>
+        <h3>Notes</h3>
+        <textarea id="notes" style="width:75%;height:5em;word-wrap: normal;" placeholder="Anything you want to add?"></textarea><br>
+        
         <hr>
         <h3>Submit Data</h3>
         <button id="submit-button">Send Data to Google Forms</button><br>
@@ -428,11 +434,39 @@
             event.preventDefault();
 
 
-            var result = "";
+            var result = "\"name\": \"";
             result += "";
+            result += "\",\n";
+            result += "\"helmet\": \"";
             result += "";
+            result += "\",\n";
+            result += "\"chestplate\": \"";
             result += "";
+            result += "\",\n";
+            result += "\"leggings\": \"";
             result += "";
+            result += "\",\n";
+            result += "\"boots\": \"";
+            result += "";
+            result += "\",\n";
+            result += "\"pet\": \"";
+            result += "";
+            result += "\",\n";
+            result += "\"main_weapon\": \"";
+            result += "";
+            result += "\",\n";
+            result += "\"min_skills\": [\"";
+            result += "";
+            result += "\"],\n";
+            result += "\"ability_items\": [\"";
+            result += "";
+            result += "\"],\n";
+            result += "\"income\": \"";
+            result += "";
+            result += "\",\n";
+            result += "\"cost\": \"";
+            result += "";
+            result += "\",\n";
             // TODO validate the input
 
             // document.getElementById("text1");
@@ -446,8 +480,8 @@
             const params = {
                 entry: {
                     640704899: document.getElementById("username").value,
-                    667247848: "",
-                    1992162842: "",
+                    667247848: result,
+                    1992162842: document.getElementById("notes").value,
                 },
             };
             post(path, params);
