@@ -194,6 +194,14 @@
         <option>Giant</option>
         <option>Submerged</option>
         <option>Jaded</option>
+        <!-- duplicate prefix replacements -->
+        <option>Very</option>
+        <option>Highly</option>
+        <option>Extremely</option>
+        <option>Not So</option>
+        <option>Thicc</option>
+        <option>Absolutely</option>
+        <option>Even More</option>
     </datalist>
     <datalist id="sword_reforge_list">
         <!-- swords and fishing rods -->
@@ -744,7 +752,7 @@
             } else if (!isValidSelection("helmets_list", helmet)) {
                 document.getElementById("status").innerHTML = "'Helmet' is invalid!";
                 return;
-            } else if (helmet_upgrades !== "" && !isValidSelection("armor_reforge_list", helmet_reforge)) {
+            } else if (helmet_reforge !== "" && !isValidSelection("armor_reforge_list", helmet_reforge)) {
                 document.getElementById("status").innerHTML = "'Helmet Reforge' is invalid!";
                 return;
             } else {
@@ -770,7 +778,7 @@
             } else if (!isValidSelection("chestplates_list", chestplate)) {
                 document.getElementById("status").innerHTML = "'Chestplate' is invalid!";
                 return;
-            } else if (chestplate_upgrades !== "" && !isValidSelection("armor_reforge_list", chestplate_reforge)) {
+            } else if (chestplate_reforge !== "" && !isValidSelection("armor_reforge_list", chestplate_reforge)) {
                 document.getElementById("status").innerHTML = "'Chestplate Reforge' is invalid!";
                 return;
             } else {
@@ -794,10 +802,10 @@
             if (leggings === "") {
                 // no leggings, no problem
             } else if (!isValidSelection("leggings_list", leggings)) {
-                document.getElementById("status").innerHTML = "'Chestplate' is invalid!";
+                document.getElementById("status").innerHTML = "'Leggings' is invalid!";
                 return;
-            } else if (leggings_upgrades !== "" && !isValidSelection("armor_reforge_list", leggings_reforge)) {
-                document.getElementById("status").innerHTML = "'Chestplate Reforge' is invalid!";
+            } else if (leggings_reforge !== "" && !isValidSelection("armor_reforge_list", leggings_reforge)) {
+                document.getElementById("status").innerHTML = "'Leggings Reforge' is invalid!";
                 return;
             } else {
                 if (leggings_reforge !== "") {
@@ -820,10 +828,10 @@
             if (boots === "") {
                 // no boots, no problem
             } else if (!isValidSelection("boots_list", boots)) {
-                document.getElementById("status").innerHTML = "'Chestplate' is invalid!";
+                document.getElementById("status").innerHTML = "'Boots' is invalid!";
                 return;
-            } else if (boots_upgrades !== "" && !isValidSelection("armor_reforge_list", boots_reforge)) {
-                document.getElementById("status").innerHTML = "'Chestplate Reforge' is invalid!";
+            } else if (boots_reforge !== "" && !isValidSelection("armor_reforge_list", boots_reforge)) {
+                document.getElementById("status").innerHTML = "'Boots Reforge' is invalid!";
                 return;
             } else {
                 if (boots_reforge !== "") {
@@ -843,20 +851,41 @@
             // TODO build and validate the data for submission
             // encodeURIComponent(JSON.stringify(result).slice(1, -1)),
 
-            const pet = document.getElementById("pet").value;
-            result += "%22pet%22%3A+";
-            result += "%22" + encodeURIComponent(pet) + "%22";
-            result += "%2C%0D%0A";
+            var pet = document.getElementById("pet").value;
+            const pet_rarity = document.getElementById("pet_rarity").value;
+            const pet_level = document.getElementById("pet_level").value;
+            if (pet === "") {
+                // no pet, no problem
+            } else if (!isValidSelection("pets_list", pet)) {
+                document.getElementById("status").innerHTML = "'Pet' is invalid!";
+                return;
+            } else if (pet_rarity !== "" && !skyblock_pets[pet].rarities.includes(pet_rarity.toLowerCase())) {
+                document.getElementById("status").innerHTML = "'Pet Rarity' is invalid!";
+                return;
+            } else if (pet_level !== "" && !(parseInt(pet_level) <= skyblock_pets[pet].maxLevel && parseInt(pet_level) >= 0)) {
+                document.getElementById("status").innerHTML = "'Pet Level' is invalid!";
+                return;
+            } else {
+                if (pet_level !== "") {
+                    pet = "[Lvl " + pet_level + "] " + pet;
+                }
+                if (pet_rarity !== "") {
+                    pet = "&" + pet_rarity[0].toLowerCase() + pet;
+                }
+                result += "%22pet%22%3A+";
+                result += "%22" + encodeURIComponent(pet) + "%22";
+                result += "%2C%0D%0A";
+            }
 
-            const main_weapon = document.getElementById("main_weapon").value;
+            var main_weapon = document.getElementById("main_weapon").value;
             result += "%22main_weapon%22%3A+";
             result += "%22" + encodeURIComponent(main_weapon) + "%22";
             result += "%2C%0D%0A";
 
-            const min_skill1 = document.getElementById("min_skill1").value;
-            const min_skill2 = document.getElementById("min_skill2").value;
-            const min_skill3 = document.getElementById("min_skill3").value;
-            const min_skill4 = document.getElementById("min_skill4").value;
+            var min_skill1 = document.getElementById("min_skill1").value;
+            var min_skill2 = document.getElementById("min_skill2").value;
+            var min_skill3 = document.getElementById("min_skill3").value;
+            var min_skill4 = document.getElementById("min_skill4").value;
             result += "%22min_skills%22%3A+";
             result += "%5B";
             result += "%22" + encodeURIComponent(min_skill1) + "%22%2C";
@@ -865,10 +894,10 @@
             result += "%22" + encodeURIComponent(min_skill4) + "%22";
             result += "%5D%2C%0D%0A";
 
-            const ability_item1 = document.getElementById("ability_item1").value;
-            const ability_item2 = document.getElementById("ability_item2").value;
-            const ability_item3 = document.getElementById("ability_item3").value;
-            const ability_item4 = document.getElementById("ability_item4").value;
+            var ability_item1 = document.getElementById("ability_item1").value;
+            var ability_item2 = document.getElementById("ability_item2").value;
+            var ability_item3 = document.getElementById("ability_item3").value;
+            var ability_item4 = document.getElementById("ability_item4").value;
             result += "%22ability_items%22%3A+";
             result += "%5B";
             result += "%22" + encodeURIComponent(ability_item1) + "%22%2C";
@@ -877,12 +906,12 @@
             result += "%22" + encodeURIComponent(ability_item4) + "%22";
             result += "%5D%2C%0D%0A";
 
-            const income = document.getElementById("income").value;
+            var income = document.getElementById("income").value;
             result += "%22income%22%3A+";
             result += "%22" + encodeURIComponent(income) + "%22";
             result += "%2C%0D%0A";
 
-            const cost = document.getElementById("cost").value;
+            var cost = document.getElementById("cost").value;
             result += "%22cost%22%3A+";
             result += "%22" + encodeURIComponent(cost) + "%22";
             result += "%2C";
@@ -894,7 +923,7 @@
                 "entry.667247848": result,
                 "entry.1992162842": encodeURIComponent(document.getElementById("notes").value),
             };
-            
+
             console.log(decodeURIComponent(result));
             // TODO uncomment (is just disabled for debugging)
             // fetch(path + Object.entries(params).map(kv => kv.join("=")).join("&"), {
