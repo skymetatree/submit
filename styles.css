@@ -62,3 +62,9 @@ button {
     font-size: 14px;
     padding: 3px
 }
+
+button:disabled,
+button[disabled] {
+    background-color: #717171;
+    color: #e6e6e6;
+}

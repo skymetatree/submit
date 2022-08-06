@@ -31,31 +31,31 @@
         <h3>Armor</h3>
         <input id="helmet_reforge" placeholder="Reforge" list="armor_reforge_list" />
         <input id="helmet" placeholder="Helmet" list="helmets_list" />
-        <input id="helmet_upgrades" placeholder="Stars / Kills" list="upgrades_list" />
+        <input id="helmet_upgrades" placeholder="Stars / DEF" list="armor_upgrades_list" />
         <input id="helmet_recombobulated" type="checkbox" /><label for="helmet_recombobulated">Rarity Upgrade</label><br>
 
         <input id="chestplate_reforge" placeholder="Reforge" list="armor_reforge_list" />
         <input id="chestplate" placeholder="Chestplate" list="chestplates_list" />
-        <input id="chestplate_upgrades" placeholder="Stars / Kills" list="upgrades_list" />
+        <input id="chestplate_upgrades" placeholder="Stars / DEF" list="armor_upgrades_list" />
         <input id="chestplate_recombobulated" type="checkbox" /><label for="chestplate_recombobulated">Rarity Upgrade</label><br>
 
         <input id="leggings_reforge" placeholder="Reforge" list="armor_reforge_list" />
         <input id="leggings" placeholder="Leggings" list="leggings_list" />
-        <input id="leggings_upgrades" placeholder="Stars / Kills" list="upgrades_list" />
+        <input id="leggings_upgrades" placeholder="Stars / DEF" list="armor_upgrades_list" />
         <input id="leggings_recombobulated" type="checkbox" /><label for="leggings_recombobulated">Rarity Upgrade</label><br>
 
         <input id="boots_reforge" placeholder="Reforge" list="armor_reforge_list" />
         <input id="boots" placeholder="Boots" list="boots_list" />
-        <input id="boots_upgrades" placeholder="Stars / Kills" list="upgrades_list" />
+        <input id="boots_upgrades" placeholder="Stars / DEF" list="armor_upgrades_list" />
         <input id="boots_recombobulated" type="checkbox" /><label for="boots_recombobulated">Rarity Upgrade</label><br>
         <h3>Pet</h3>
         <input id="pet_rarity" placeholder="Rarity" list="pet_rarity_list" />
         <input id="pet_level" type="number" placeholder="Level" />
         <input id="pet" placeholder="Pet" list="pets_list" /><br>
         <h3>Main Weapon</h3>
-        <input id="main_weapon_reforge" placeholder="Reforge" list="weapon_reforge_list" />
-        <input id="main_weapon" placeholder="Main Weapon" list="weapons_list" />
-        <input id="main_weapon_upgrades" placeholder="Stars / Kills" list="upgrades_list" />
+        <input id="main_weapon_reforge" placeholder="Reforge" list="full_reforge_list" />
+        <input id="main_weapon" placeholder="Main Weapon" list="ability_items_list" />
+        <input id="main_weapon_upgrades" placeholder="Stars / Kills" list="weapon_upgrades_list" />
         <input id="main_weapon_recombobulated" type="checkbox" /><label for="main_weapon_recombobulated">Rarity Upgrade</label><br>
         <h3>Skill Requirements</h3>
         <input id="min_skill1" placeholder="Category" list="min_skills_list" />
@@ -67,21 +67,21 @@
         <input id="min_skill4" placeholder="Category" list="min_skills_list" />
         <input id="min_skill4_level" placeholder="Level / Amount" /><br>
         <h3>Ability Items</h3>
-        <input id="ability_item1_reforge" placeholder="Reforge" list="weapon_reforge_list" />
+        <input id="ability_item1_reforge" placeholder="Reforge" list="full_reforge_list" />
         <input id="ability_item1" placeholder="Ability Item" list="ability_items_list" />
-        <input id="ability_item1_upgrades" placeholder="Stars / Kills" list="upgrades_list" />
+        <input id="ability_item1_upgrades" placeholder="Stars / Kills" list="weapon_upgrades_list" />
         <input id="ability_item1_recombobulated" type="checkbox" /><label for="ability_item1_recombobulated">Rarity Upgrade</label><br>
-        <input id="ability_item2_reforge" placeholder="Reforge" list="weapon_reforge_list" />
+        <input id="ability_item2_reforge" placeholder="Reforge" list="full_reforge_list" />
         <input id="ability_item2" placeholder="Ability Item" list="ability_items_list" />
-        <input id="ability_item2_upgrades" placeholder="Stars / Kills" list="upgrades_list" />
+        <input id="ability_item2_upgrades" placeholder="Stars / Kills" list="weapon_upgrades_list" />
         <input id="ability_item2_recombobulated" type="checkbox" /><label for="ability_item2_recombobulated">Rarity Upgrade</label><br>
-        <input id="ability_item3_reforge" placeholder="Reforge" list="weapon_reforge_list" />
+        <input id="ability_item3_reforge" placeholder="Reforge" list="full_reforge_list" />
         <input id="ability_item3" placeholder="Ability Item" list="ability_items_list" />
-        <input id="ability_item3_upgrades" placeholder="Stars / Kills" list="upgrades_list" />
+        <input id="ability_item3_upgrades" placeholder="Stars / Kills" list="weapon_upgrades_list" />
         <input id="ability_item3_recombobulated" type="checkbox" /><label for="ability_item3_recombobulated">Rarity Upgrade</label><br>
-        <input id="ability_item4_reforge" placeholder="Reforge" list="weapon_reforge_list" />
+        <input id="ability_item4_reforge" placeholder="Reforge" list="full_reforge_list" />
         <input id="ability_item4" placeholder="Ability Item" list="ability_items_list" />
-        <input id="ability_item4_upgrades" placeholder="Stars / Kills" list="upgrades_list" />
+        <input id="ability_item4_upgrades" placeholder="Stars / Kills" list="weapon_upgrades_list" />
         <input id="ability_item4_recombobulated" type="checkbox" /><label for="ability_item4_recombobulated">Rarity Upgrade</label><br>
         <hr>
         <h3>Hourly Income</h3>
@@ -95,6 +95,7 @@
 
         <hr>
         <h3>Submit Data</h3>
+        <h3 id="status"></h3>
         <button id="submit-button">Send Data to Google Forms</button><br>
         <hr>
     </div>
@@ -146,6 +147,9 @@
         <option>MP Slender </option>
         <option>MP Scorching </option>
         <option>HotM</option>
+        <option>Gemstone Powder</option>
+        <option>Mithril Powder</option>
+        <option>HotM</option>
         <option>Bank Coins</option>
         <option>Zombie Slayer</option>
         <option>Spider Slayer</option>
@@ -166,11 +170,192 @@
         <option>Enchanting</option>
         <option>Alchemy</option>
     </datalist>
-    <!-- TODO add armor_reforge_list -->
-    <datalist id="armor_reforge_list"></datalist>
-    <!-- TODO add weapon_reforge_list -->
-    <datalist id="weapon_reforge_list"></datalist>
-    <datalist id="upgrades_list">
+    <datalist id="armor_reforge_list">
+        <!-- armor -->
+        <option>Clean</option>
+        <option>Fierce</option>
+        <option>Heavy</option>
+        <option>Light</option>
+        <option>Mythic</option>
+        <option>Pure</option>
+        <option>Smart</option>
+        <option>Titanic</option>
+        <option>Wise</option>
+        <option>Perfect</option>
+        <option>Necrotic</option>
+        <option>Ancient</option>
+        <option>Spiked</option>
+        <option>Renowned</option>
+        <option>Hyper</option>
+        <option>Reinforced</option>
+        <option>Loving</option>
+        <option>Ridiculous</option>
+        <option>Empowered</option>
+        <option>Giant</option>
+        <option>Submerged</option>
+        <option>Jaded</option>
+    </datalist>
+    <datalist id="sword_reforge_list">
+        <!-- swords and fishing rods -->
+        <option>Gentle</option>
+        <option>Odd</option>
+        <option>Fast</option>
+        <option>Fair</option>
+        <option>Epic</option>
+        <option>Sharp</option>
+        <option>Heroic</option>
+        <option>Spicy</option>
+        <option>Legendary</option>
+        <option>Dirty</option>
+        <option>Fabled</option>
+        <option>Suspicious</option>
+        <option>Gilded</option>
+        <option>Warped</option>
+        <option>Bulky</option>
+    </datalist>
+    <datalist id="full_reforge_list">
+        <!-- swords and fishing rods -->
+        <option>Gentle</option>
+        <option>Odd</option>
+        <option>Fast</option>
+        <option>Fair</option>
+        <option>Epic</option>
+        <option>Sharp</option>
+        <option>Heroic</option>
+        <option>Spicy</option>
+        <option>Legendary</option>
+        <option>Dirty</option>
+        <option>Fabled</option>
+        <option>Suspicious</option>
+        <option>Gilded</option>
+        <option>Warped</option>
+        <option>Bulky</option>
+        <!-- fishing rods -->
+        <option>Salty</option>
+        <option>Treacherous</option>
+        <option>Stiff</option>
+        <option>Lucky</option>
+        <!-- axe -->
+        <option>Double-Bit</option>
+        <option>Lumberjack's</option>
+        <option>Great</option>
+        <option>Rugged</option>
+        <option>Lush</option>
+        <option>Moil</option>
+        <option>Toil</option>
+        <!-- hoe / axe -->
+        <option>Blessed</option>
+        <!-- hoe -->
+        <option>Green Thumb</option>
+        <option>Peasant's</option>
+        <option>Robust</option>
+        <option>Zooming</option>
+        <option>Bountiful</option>
+        <!-- pickaxe / drill -->
+        <option>Unyielding</option>
+        <option>Prospector's</option>
+        <option>Excellent</option>
+        <option>Sturdy</option>
+        <option>Fortunate</option>
+        <option>Magnetic</option>
+        <option>Fruitful</option>
+        <option>Refined</option>
+        <option>Stellar</option>
+        <option>Mithraic</option>
+        <option>Auspicious</option>
+        <option>Fleet</option>
+        <option>Heated</option>
+        <option>Ambered</option>
+        <!-- equipment -->
+        <option>Waxed</option>
+        <option>Fortified</option>
+        <option>Strengthened</option>
+        <option>Glistening</option>
+        <!-- armor -->
+        <option>Clean</option>
+        <option>Fierce</option>
+        <option>Heavy</option>
+        <option>Light</option>
+        <option>Mythic</option>
+        <option>Pure</option>
+        <option>Smart</option>
+        <option>Titanic</option>
+        <option>Wise</option>
+        <option>Perfect</option>
+        <option>Necrotic</option>
+        <option>Ancient</option>
+        <option>Spiked</option>
+        <option>Renowned</option>
+        <option>Hyper</option>
+        <option>Reinforced</option>
+        <option>Loving</option>
+        <option>Ridiculous</option>
+        <option>Empowered</option>
+        <option>Giant</option>
+        <option>Submerged</option>
+        <option>Jaded</option>
+        <!-- duplicate prefix replacements -->
+        <option>Very</option>
+        <option>Highly</option>
+        <option>Extremely</option>
+        <option>Not So</option>
+        <option>Thicc</option>
+        <option>Absolutely</option>
+        <option>Even More</option>
+    </datalist>
+    <datalist id="armor_upgrades_list">
+        <option></option>
+        <option>1✪</option>
+        <option>2✪</option>
+        <option>3✪</option>
+        <option>4✪</option>
+        <option>5✪</option>
+        <option>6✪</option>
+        <option>7✪</option>
+        <option>8✪</option>
+        <option>9✪</option>
+        <option>10✪</option>
+        <option>11✪</option>
+        <option>12✪</option>
+        <option>13✪</option>
+        <option>14✪</option>
+        <option>15✪</option>
+        <option>+20❈</option>
+        <option>+40❈</option>
+        <option>+45❈</option>
+        <option>+50❈</option>
+        <option>+50❈</option>
+        <option>+60❈</option>
+        <option>+90❈</option>
+        <option>+110❈</option>
+        <option>+120❈</option>
+        <option>+135❈</option>
+        <option>+150❈</option>
+        <option>+160❈</option>
+        <option>+180❈</option>
+        <option>+200❈</option>
+        <option>+210❈</option>
+        <option>+215❈</option>
+        <option>+220❈</option>
+        <option>+235❈</option>
+        <option>+240❈</option>
+        <option>+250❈</option>
+        <option>+260❈</option>
+        <option>+270❈</option>
+        <option>+280❈</option>
+        <option>+285❈</option>
+        <option>+300❈</option>
+        <option>+310❈</option>
+        <option>+315❈</option>
+        <option>+335❈</option>
+        <option>+355❈</option>
+        <option>+370❈</option>
+        <option>+380❈</option>
+        <option>+390❈</option>
+        <option>+395❈</option>
+        <option>+400❈</option>
+    </datalist>
+    <datalist id="weapon_upgrades_list">
         <option></option>
         <option>1✪</option>
         <option>2✪</option>
@@ -503,7 +688,21 @@
         loadSkyBlockItems();
         const button = document.getElementById("submit-button");
         button.addEventListener("click", function(event) {
+            document.getElementById("status").innerHTML = "";
             event.preventDefault();
+            const cooldown_counter = 15;
+            var counter = cooldown_counter;
+            document.getElementById("submit-button").innerHTML = "Submission Cooldown - " + counter + "s";
+            var cooldown_id = setInterval(function() {
+                counter--;
+                document.getElementById("submit-button").innerHTML = "Submission Cooldown - " + counter + "s";
+            }, 1000);
+            var timeout_id = setTimeout(function() {
+                clearInterval(cooldown_id);
+                button.disabled = false;
+                document.getElementById("submit-button").innerHTML = "Send Data to Google Forms";
+            }, cooldown_counter * 1000);
+            button.disabled = true;
 
             // TODO build and validate the data for submission
             // encodeURIComponent(JSON.stringify(result).slice(1, -1)),
@@ -511,8 +710,12 @@
             var result = "";
 
             const name = document.getElementById("name").value;
+            if (name === "") {
+                document.getElementById("status").innerHTML = "'Setup Name' is missing!";
+                return;
+            }
             result += "%22name%22%3A+"; // "name": 
-            result += "%22%22"; // ""
+            result += "%22" + name + "%22"; // "value"
             result += "%2C%0D%0A"; // ,\r\n
 
             const helmet = document.getElementById("helmet").value;
@@ -586,13 +789,16 @@
                 "entry.667247848": result,
                 "entry.1992162842": encodeURIComponent(document.getElementById("notes").value),
             };
-            button.disabled = true;
             fetch(path + Object.entries(params).map(kv => kv.join("=")).join("&"), {
                 method: "POST",
                 mode: "cors"
             }).finally(() => {
                 alert("Thank you for your submission!");
-                button.disabled = false;
+                // button.disabled = false;
+                // clearTimeout(timeout_id);
+                // clearInterval(cooldown_id);
+                // const submit_data_cooldown = document.getElementById("submit-button");
+                // submit_data_cooldown.innerHTML = "Send Data to Google Forms";
             });
         });
     </script>
