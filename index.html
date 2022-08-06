@@ -92,7 +92,7 @@
         <hr>
         <h3>Notes</h3>
         <textarea id="notes" style="width:75%;height:5em;word-wrap: normal;" placeholder="Anything you want to add?"></textarea><br>
-        
+
         <hr>
         <h3>Submit Data</h3>
         <button id="submit-button">Send Data to Google Forms</button><br>
@@ -430,7 +430,6 @@
         const button = document.getElementById("submit-button");
 
         button.addEventListener("click", function(event) {
-            console.log("Here");
             event.preventDefault();
 
 
@@ -476,41 +475,18 @@
             // if (nameValid && emailValid) {
             // alert("Demo only. No form was posted.");
             // }
-            const path = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfo_YODrIHaz29amZ5XmvMlYEG-SZmbFsSBP9r2UJhgp4Ow5w/formResponse";
+
+            const path = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfo_YODrIHaz29amZ5XmvMlYEG-SZmbFsSBP9r2UJhgp4Ow5w/formResponse?";
             const params = {
-                entry: {
-                    640704899: document.getElementById("username").value,
-                    667247848: result,
-                    1992162842: document.getElementById("notes").value,
-                },
+                usp: "pp_url",
+                "entry.640704899": document.getElementById("username").value,
+                "entry.667247848": result,
+                "entry.1992162842": document.getElementById("notes").value,
             };
-            post(path, params);
-
+            fetch(path + Object.entries(params).map(kv => kv.join("=")).join("&"))
+                .catch(error => {
+                    console.log(error);
+                });
         });
-
-        /**
-         * https://stackoverflow.com/a/133997/6307611
-         * sends a request to the specified url from a form. this will change the window location.
-         * @param {string} path the path to send the post request to
-         * @param {object} params the parameters to add to the url
-         * @param {string} [method=post] the method to use on the form
-         */
-        function post(path, params, method = 'post') {
-            const form = document.createElement('form');
-            form.method = method;
-            form.action = path;
-            for (const key in params) {
-                if (params.hasOwnProperty(key)) {
-                    const hiddenField = document.createElement('input');
-                    hiddenField.type = 'hidden';
-                    hiddenField.name = key;
-                    hiddenField.value = params[key];
-
-                    form.appendChild(hiddenField);
-                }
-            }
-            document.body.appendChild(form);
-            form.submit();
-        }
     </script>
 </body></html>
