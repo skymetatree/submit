@@ -509,35 +509,46 @@
             // encodeURIComponent(JSON.stringify(result).slice(1, -1)),
 
             var result = "";
-            
+
+            const name = document.getElementById("name").value;
             result += "%22name%22%3A+"; // "name": 
             result += "%22%22"; // ""
             result += "%2C%0D%0A"; // ,\r\n
 
+            const helmet = document.getElementById("helmet").value;
             result += "%22helmet%22%3A+";
             result += "%22%22";
             result += "%2C%0D%0A";
 
+            const chestplate = document.getElementById("chestplate").value;
             result += "%22chestplate%22%3A+";
             result += "%22%22";
             result += "%2C%0D%0A";
 
+            const leggings = document.getElementById("leggings").value;
             result += "%22leggings%22%3A+";
             result += "%22%22";
             result += "%2C%0D%0A";
 
+            const boots = document.getElementById("boots").value;
             result += "%22boots%22%3A+";
             result += "%22%22";
             result += "%2C%0D%0A";
 
+            const pet = document.getElementById("pet").value;
             result += "%22pet%22%3A+";
             result += "%22%22";
             result += "%2C%0D%0A";
 
+            const main_weapon = document.getElementById("main_weapon").value;
             result += "%22main_weapon%22%3A+";
             result += "%22%22";
             result += "%2C%0D%0A";
 
+            const min_skill1 = document.getElementById("min_skill1").value;
+            const min_skill2 = document.getElementById("min_skill2").value;
+            const min_skill3 = document.getElementById("min_skill3").value;
+            const min_skill4 = document.getElementById("min_skill4").value;
             result += "%22min_skills%22%3A+";
             result += "%5B";
             result += "%22%22%2C";
@@ -546,6 +557,10 @@
             result += "%22%22";
             result += "%5D%2C%0D%0A";
 
+            const ability_item1 = document.getElementById("ability_item1").value;
+            const ability_item2 = document.getElementById("ability_item2").value;
+            const ability_item3 = document.getElementById("ability_item3").value;
+            const ability_item4 = document.getElementById("ability_item4").value;
             result += "%22ability_items%22%3A+";
             result += "%5B";
             result += "%22%22%2C";
@@ -554,10 +569,12 @@
             result += "%22%22";
             result += "%5D%2C%0D%0A";
 
+            const income = document.getElementById("income").value;
             result += "%22income%22%3A+";
             result += "%22%22";
             result += "%2C%0D%0A";
 
+            const cost = document.getElementById("cost").value;
             result += "%22cost%22%3A+";
             result += "%22%22";
             result += "%2C";
