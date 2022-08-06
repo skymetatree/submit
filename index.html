@@ -712,7 +712,7 @@
                 return;
             }
             result += "%22name%22%3A+"; // "name": 
-            result += "%22" + name + "%22"; // "value"
+            result += "%22" + encodeURIComponent(name) + "%22"; // "value"
             result += "%2C%0D%0A"; // ,\r\n
 
             // TODO build and validate the data for submission
