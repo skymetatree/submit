@@ -704,9 +704,6 @@
             }, cooldown_counter * 1000);
             button.disabled = true;
 
-            // TODO build and validate the data for submission
-            // encodeURIComponent(JSON.stringify(result).slice(1, -1)),
-
             var result = "";
 
             const name = document.getElementById("name").value;
@@ -718,6 +715,9 @@
             result += "%22" + name + "%22"; // "value"
             result += "%2C%0D%0A"; // ,\r\n
 
+            // TODO build and validate the data for submission
+            // encodeURIComponent(JSON.stringify(result).slice(1, -1)),
+            
             const helmet = document.getElementById("helmet").value;
             result += "%22helmet%22%3A+";
             result += "%22%22";
