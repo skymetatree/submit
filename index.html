@@ -7,20 +7,158 @@
 </head>
 
 <body>
+    <!-- nav bar -->
     <header>
         <div class="nav-bar">
             <nav>
                 <ul>
                     <li>
+                        <a href="https://github.com/skymetatree">&lt; Back</a> |
                         <a href="https://github.com/skymetatree/submit">GitHub Project</a>
                     </li>
                 </ul>
             </nav>
         </div>
     </header>
-    <script>
-        // TODO
-    </script>
-</body>
 
-</html>
+    <!-- form -->
+    <div class="user-form">
+        <h3>Minecraft Username</h3>
+        <input id="username" placeholder="Username" /><br>
+        <h3>Setup Name</h3>
+        <input id="name" placeholder="Setup Name" /><br>
+        <h3>Armor</h3>
+        <input id="helmet_reforge" placeholder="Reforge" list="armor_reforge_list" /><input id="helmet" placeholder="Helmet" list="helmets_list" /><input id="helmet_upgrades" placeholder="Stars / Kills" list="upgrades_list" /><input id="helmet_recombobulated" placeholder="Recombobulated?" list="recombobulated_list" /><br>
+        <input id="chestplate_reforge" placeholder="Reforge" list="armor_reforge_list" /><input id="chestplate" placeholder="Chestplate" list="chestplates_list" /><input id="chestplate_upgrades" placeholder="Stars / Kills" list="upgrades_list" /><input id="chestplate_recombobulated" placeholder="Recombobulated?" list="recombobulated_list" /><br>
+        <input id="leggings_reforge" placeholder="Reforge" list="armor_reforge_list" /><input id="leggings" placeholder="Leggings" list="leggings_list" /><input id="helmet_upgrades" placeholder="Stars / Kills" list="upgrades_list" /><input id="leggings_recombobulated" placeholder="Recombobulated?" list="recombobulated_list" /><br>
+        <input id="boots_reforge" placeholder="Reforge" list="armor_reforge_list" /><input id="boots" placeholder="Boots" list="boots_list" /><input id="helmet_upgrades" placeholder="Stars / Kills" list="upgrades_list" /><input id="boots_recombobulated" placeholder="Recombobulated?" list="recombobulated_list" /><br>
+        <h3>Pet</h3>
+        <input id="pet" placeholder="Pet" list="pets_list" /><br>
+        <h3>Main Weapon</h3>
+        <input id="main_weapon_reforge" placeholder="Reforge" list="weapon_reforge_list" /><input id="main_weapon" placeholder="Main Weapon" list="weapons_list" /><input id="main_weapon_upgrades" placeholder="Stars / Kills" list="upgrades_list" /><br>
+        <h3>Skill Requirements</h3>
+        <input id="min_skill1" placeholder="Skill Requirement" list="min_skills_list" /><br>
+        <input id="min_skill2" placeholder="Skill Requirement" list="min_skills_list" /><br>
+        <input id="min_skill3" placeholder="Skill Requirement" list="min_skills_list" /><br>
+        <input id="min_skill4" placeholder="Skill Requirement" list="min_skills_list" /><br>
+        <h3>Ability Items</h3>
+        <input id="ability_item1" placeholder="Ability Item" list="ability_item_list" /><br>
+        <input id="ability_item2" placeholder="Ability Item" list="ability_item_list" /><br>
+        <input id="ability_item3" placeholder="Ability Item" list="ability_item_list" /><br>
+        <input id="ability_item4" placeholder="Ability Item" list="ability_item_list" /><br>
+        <h3>Hourly Income</h3>
+        <input id="money" placeholder="Hourly Income" list="ability_item_list" /><br>
+        <h3>Initial Setup Cost</h3>
+        <input id="cost" placeholder="Initial Setup Cost" list="ability_item_list" /><br>
+
+        <h3>Submit Data</h3>
+        <button id="submit-button">Send</button><br>
+    </div>
+
+    <!-- data lists -->
+    <datalist id="helmets_list"></datalist>
+    <datalist id="chestplates_list"></datalist>
+    <datalist id="leggings_list"></datalist>
+    <datalist id="boots_list"></datalist>
+    <datalist id="pets_list"></datalist>
+    <datalist id="weapons_list"></datalist>
+    <datalist id="ability_item_list"></datalist>
+    <datalist id="min_skills_list">
+        <option>Fairy Souls</option>
+        <option>Skill Average</option>
+    </datalist>
+    <datalist id="armor_reforge_list"></datalist>
+    <datalist id="weapon_reforge_list"></datalist>
+    <datalist id="upgrades_list">
+        <option></option>
+        <option>1✪</option>
+        <option>2✪</option>
+        <option>3✪</option>
+        <option>4✪</option>
+        <option>5✪</option>
+        <option>6✪</option>
+        <option>7✪</option>
+        <option>8✪</option>
+        <option>9✪</option>
+        <option>10✪</option>
+        <option>11✪</option>
+        <option>12✪</option>
+        <option>13✪</option>
+        <option>14✪</option>
+        <option>15✪</option>
+    </datalist>
+    <datalist id="recombobulated_list">
+        <option>Yes</option>
+        <option>No</option>
+    </datalist>
+
+    <!-- button -->
+    <br><br><br>
+    <h3></h3>
+
+    <!-- script -->
+    <script>
+        // TODO get all hypixel items and categorize those and add them to the datalists
+        
+        // https://api.hypixel.net/resources/vanity/pets
+        // https://api.hypixel.net/resources/skyblock/items
+
+        const button = document.getElementById("submit-button");
+
+        button.addEventListener("click", function(event) {
+            console.log("Here");
+            event.preventDefault();
+
+
+            var result = "";
+            result += "";
+            result += "";
+            result += "";
+            result += "";
+            // TODO validate the input
+
+            // document.getElementById("text1");
+
+
+            // if valid, submit the form.
+            // if (nameValid && emailValid) {
+            // alert("Demo only. No form was posted.");
+            // }
+            const path = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfo_YODrIHaz29amZ5XmvMlYEG-SZmbFsSBP9r2UJhgp4Ow5w/formResponse";
+            const params = {
+                entry: {
+                    640704899: document.getElementById("username").value,
+                    667247848: "",
+                    1992162842: "",
+                },
+            };
+            post(path, params);
+
+        });
+
+        /**
+         * https://stackoverflow.com/a/133997/6307611
+         * sends a request to the specified url from a form. this will change the window location.
+         * @param {string} path the path to send the post request to
+         * @param {object} params the parameters to add to the url
+         * @param {string} [method=post] the method to use on the form
+         */
+        function post(path, params, method = 'post') {
+            const form = document.createElement('form');
+            form.method = method;
+            form.action = path;
+            for (const key in params) {
+                if (params.hasOwnProperty(key)) {
+                    const hiddenField = document.createElement('input');
+                    hiddenField.type = 'hidden';
+                    hiddenField.name = key;
+                    hiddenField.value = params[key];
+
+                    form.appendChild(hiddenField);
+                }
+            }
+            document.body.appendChild(form);
+            form.submit();
+        }
+    </script>
+</body></html>
