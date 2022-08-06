@@ -505,7 +505,7 @@
         button.addEventListener("click", function(event) {
             event.preventDefault();
 
-            // TODO build the submitted text
+            // TODO build and validate the data for submission
             // encodeURIComponent(JSON.stringify(result).slice(1, -1)),
 
             var result = "";
@@ -562,7 +562,6 @@
             result += "%22%22";
             result += "%2C";
 
-            // TODO check if valid. only then continue
 
             const path = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfo_YODrIHaz29amZ5XmvMlYEG-SZmbFsSBP9r2UJhgp4Ow5w/formResponse?";
             const params = {
