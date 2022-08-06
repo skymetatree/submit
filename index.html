@@ -483,14 +483,13 @@
                 "entry.667247848": result,
                 "entry.1992162842": document.getElementById("notes").value,
             };
+            button.disabled = true;
             fetch(path + Object.entries(params).map(kv => kv.join("=")).join("&"), {
-                    mode: "cors"
-                }).then(response => {
-                    console.log(response);
-                })
-                .catch(error => {
-                    console.log(error);
-                });
+                mode: "cors"
+            }).finally(() => {
+                alert("Thank you for your submission!");
+                button.disabled = false;
+            });
         });
     </script>
 </body></html>
