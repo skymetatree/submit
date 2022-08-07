@@ -957,7 +957,7 @@
             } else if (!isValidSelection("min_skills_list", min_skill1)) {
                 document.getElementById("status").innerHTML = "'Skill Requirement 1' is invalid!";
                 return;
-            } else if (!/[0-9]{1,3}(.[0-9])?[kmb]?/.test(min_skill1_level)) {
+            } else if (!/^[0-9]{1,3}(.[0-9])?[kmb]?$/.test(min_skill1_level)) {
                 document.getElementById("status").innerHTML = "'Skill Level 1' is invalid!";
                 return;
             } else {
@@ -973,7 +973,7 @@
             } else if (!isValidSelection("min_skills_list", min_skill2)) {
                 document.getElementById("status").innerHTML = "'Skill Requirement 2' is invalid!";
                 return;
-            } else if (!/[0-9]{1,3}(.[0-9])?[kmb]?/.test(min_skill2_level)) {
+            } else if (!/^[0-9]{1,3}(.[0-9])?[kmb]?$/.test(min_skill2_level)) {
                 document.getElementById("status").innerHTML = "'Skill Level 2' is invalid!";
                 return;
             } else {
@@ -989,7 +989,7 @@
             } else if (!isValidSelection("min_skills_list", min_skill3)) {
                 document.getElementById("status").innerHTML = "'Skill Requirement 3' is invalid!";
                 return;
-            } else if (!/[0-9]{1,3}(.[0-9])?[kmb]?/.test(min_skill3_level)) {
+            } else if (!/^[0-9]{1,3}(.[0-9])?[kmb]?$/.test(min_skill3_level)) {
                 document.getElementById("status").innerHTML = "'Skill Level 3' is invalid!";
                 return;
             } else {
@@ -1005,7 +1005,7 @@
             } else if (!isValidSelection("min_skills_list", min_skill4)) {
                 document.getElementById("status").innerHTML = "'Skill Requirement 4' is invalid!";
                 return;
-            } else if (!/[0-9]{1,3}(.[0-9])?[kmb]?/.test(min_skill4_level)) {
+            } else if (!/^[0-9]{1,3}(.[0-9])?[kmb]?$/.test(min_skill4_level)) {
                 document.getElementById("status").innerHTML = "'Skill Level 4' is invalid!";
                 return;
             } else {
@@ -1135,7 +1135,7 @@
 
             const income = document.getElementById("income").value;
             const income_description = document.getElementById("income_description").value;
-            if (!/[0-9]{1,3}(.[0-9])?[kmb]?/.test(income)) {
+            if (!/^[0-9]{1,3}(.[0-9])?[kmb]?$/.test(income)) {
                 document.getElementById("status").innerHTML = "'Income Per Hour' is invalid! Valid examples would be '3', '1.6m' or '100k'.";
                 return;
             } else if (income_description === "") {
@@ -1148,7 +1148,7 @@
             }
 
             const cost = document.getElementById("cost").value;
-            if (!/[0-9]{1,3}(.[0-9])?[kmb]?/.test(cost)) {
+            if (!/^[0-9]{1,3}(.[0-9])?[kmb]?$/.test(cost)) {
                 document.getElementById("status").innerHTML = "'Initial Setup Cost' is invalid! Valid examples would be '3', '1.6m' or '100k'.";
                 return;
             } else {
