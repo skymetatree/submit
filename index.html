@@ -219,6 +219,7 @@
         <option>Suspicious</option>
         <option>Gilded</option>
         <option>Warped</option>
+        <option>Withered</option>
         <option>Bulky</option>
     </datalist>
     <datalist id="full_reforge_list">
@@ -237,6 +238,7 @@
         <option>Suspicious</option>
         <option>Gilded</option>
         <option>Warped</option>
+        <option>Withered</option>
         <option>Bulky</option>
         <!-- bow -->
         <option>Deadly</option>
@@ -761,7 +763,7 @@
         button.addEventListener("click", function(event) {
             document.getElementById("status").innerHTML = "";
             event.preventDefault();
-            const cooldown_counter = 15;
+            const cooldown_counter = 10;
             var counter = cooldown_counter;
             document.getElementById("submit-button").innerHTML = "Submission Cooldown - " + counter + "s";
             var cooldown_id = setInterval(function() {
@@ -780,8 +782,7 @@
             const name = document.getElementById("name").value;
             if (name === "") {
                 document.getElementById("status").innerHTML = "'Setup Name' is missing!";
-                // NOTE uncomment (is just disabled for debugging)
-                // return;
+                return;
             }
             result += "%22name%22%3A+"; // "name": 
             result += "%22" + encodeURIComponent(name) + "%22"; // "value"
@@ -1165,13 +1166,12 @@
             };
 
             console.log(decodeURIComponent(result));
-            // NOTE uncomment (is just disabled for debugging)
-            // fetch(path + Object.entries(params).map(kv => kv.join("=")).join("&"), {
-            //     method: "POST",
-            //     mode: "cors"
-            // }).finally(() => {
-            //     alert("Thank you for your submission!");
-            // });
+            fetch(path + Object.entries(params).map(kv => kv.join("=")).join("&"), {
+                method: "POST",
+                mode: "cors"
+            }).finally(() => {
+                alert("Thank you for your submission!");
+            });
         });
     </script>
 </body></html>
