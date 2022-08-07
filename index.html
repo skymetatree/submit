@@ -1022,18 +1022,115 @@
                 result += "%5D%2C%0D%0A";
             }
 
-            // TODO build and validate the data for submission
+            var valid_ability_items = [];
             var ability_item1 = document.getElementById("ability_item1").value;
+            const ability_item1_reforge = document.getElementById("ability_item1_reforge").value;
+            const ability_item1_upgrades = document.getElementById("ability_item1_upgrades").value;
+            const ability_item1_recombobulated = document.getElementById("ability_item1_recombobulated").checked;
+            if (ability_item1 === "") {
+                // no ability_item1, no problem
+            } else if (!isValidSelection("ability_items_list", ability_item1)) {
+                document.getElementById("status").innerHTML = "'Ability Item 1' is invalid!";
+                return;
+            } else if (ability_item1_reforge !== "" && !isValidReforge(ability_item1, ability_item1_reforge)) {
+                document.getElementById("status").innerHTML = "'Ability Item 1 Reforge' is invalid!";
+                return;
+            } else {
+                if (ability_item1_reforge !== "") {
+                    ability_item1 = (ability_item1[0] === "&" ? (ability_item1[0] + ability_item1[1]) : "") + ability_item1_reforge + " " + (ability_item1[0] === "&" ? ability_item1.slice(2) : ability_item1)
+                }
+                if (ability_item1_recombobulated) {
+                    ability_item1 = getUpgradedItemRarity(ability_item1);
+                }
+                if (ability_item1_upgrades !== "") {
+                    ability_item1 = ability_item1 + " " + ability_item1_upgrades;
+                }
+                valid_ability_items.push(ability_item1);
+            }
+
             var ability_item2 = document.getElementById("ability_item2").value;
+            const ability_item2_reforge = document.getElementById("ability_item2_reforge").value;
+            const ability_item2_upgrades = document.getElementById("ability_item2_upgrades").value;
+            const ability_item2_recombobulated = document.getElementById("ability_item2_recombobulated").checked;
+            if (ability_item2 === "") {
+                // no ability_item2, no problem
+            } else if (!isValidSelection("ability_items_list", ability_item2)) {
+                document.getElementById("status").innerHTML = "'Ability Item 2' is invalid!";
+                return;
+            } else if (ability_item2_reforge !== "" && !isValidReforge(ability_item2, ability_item2_reforge)) {
+                document.getElementById("status").innerHTML = "'Ability Item 2 Reforge' is invalid!";
+                return;
+            } else {
+                if (ability_item2_reforge !== "") {
+                    ability_item2 = (ability_item2[0] === "&" ? (ability_item2[0] + ability_item2[1]) : "") + ability_item2_reforge + " " + (ability_item2[0] === "&" ? ability_item2.slice(2) : ability_item2)
+                }
+                if (ability_item2_recombobulated) {
+                    ability_item2 = getUpgradedItemRarity(ability_item2);
+                }
+                if (ability_item2_upgrades !== "") {
+                    ability_item2 = ability_item2 + " " + ability_item2_upgrades;
+                }
+                valid_ability_items.push(ability_item2);
+            }
+
             var ability_item3 = document.getElementById("ability_item3").value;
+            const ability_item3_reforge = document.getElementById("ability_item3_reforge").value;
+            const ability_item3_upgrades = document.getElementById("ability_item3_upgrades").value;
+            const ability_item3_recombobulated = document.getElementById("ability_item3_recombobulated").checked;
+            if (ability_item3 === "") {
+                // no ability_item3, no problem
+            } else if (!isValidSelection("ability_items_list", ability_item3)) {
+                document.getElementById("status").innerHTML = "'Ability Item 3' is invalid!";
+                return;
+            } else if (ability_item3_reforge !== "" && !isValidReforge(ability_item3, ability_item3_reforge)) {
+                document.getElementById("status").innerHTML = "'Ability Item 3 Reforge' is invalid!";
+                return;
+            } else {
+                if (ability_item3_reforge !== "") {
+                    ability_item3 = (ability_item3[0] === "&" ? (ability_item3[0] + ability_item3[1]) : "") + ability_item3_reforge + " " + (ability_item3[0] === "&" ? ability_item3.slice(2) : ability_item3)
+                }
+                if (ability_item3_recombobulated) {
+                    ability_item3 = getUpgradedItemRarity(ability_item3);
+                }
+                if (ability_item3_upgrades !== "") {
+                    ability_item3 = ability_item3 + " " + ability_item3_upgrades;
+                }
+                valid_ability_items.push(ability_item3);
+            }
+
             var ability_item4 = document.getElementById("ability_item4").value;
-            result += "%22ability_items%22%3A+";
-            result += "%5B";
-            result += "%22" + encodeURIComponent(ability_item1) + "%22%2C";
-            result += "%22" + encodeURIComponent(ability_item2) + "%22%2C";
-            result += "%22" + encodeURIComponent(ability_item3) + "%22%2C";
-            result += "%22" + encodeURIComponent(ability_item4) + "%22";
-            result += "%5D%2C%0D%0A";
+            const ability_item4_reforge = document.getElementById("ability_item4_reforge").value;
+            const ability_item4_upgrades = document.getElementById("ability_item4_upgrades").value;
+            const ability_item4_recombobulated = document.getElementById("ability_item4_recombobulated").checked;
+            if (ability_item4 === "") {
+                // no ability_item4, no problem
+            } else if (!isValidSelection("ability_items_list", ability_item4)) {
+                document.getElementById("status").innerHTML = "'Ability Item 4' is invalid!";
+                return;
+            } else if (ability_item4_reforge !== "" && !isValidReforge(ability_item4, ability_item4_reforge)) {
+                document.getElementById("status").innerHTML = "'Ability Item 4 Reforge' is invalid!";
+                return;
+            } else {
+                if (ability_item4_reforge !== "") {
+                    ability_item4 = (ability_item4[0] === "&" ? (ability_item4[0] + ability_item4[1]) : "") + ability_item4_reforge + " " + (ability_item4[0] === "&" ? ability_item4.slice(2) : ability_item4)
+                }
+                if (ability_item4_recombobulated) {
+                    ability_item4 = getUpgradedItemRarity(ability_item4);
+                }
+                if (ability_item4_upgrades !== "") {
+                    ability_item4 = ability_item4 + " " + ability_item4_upgrades;
+                }
+                valid_ability_items.push(ability_item4);
+            }
+
+            if (valid_ability_items.length > 0) {
+                result += "%22ability_items%22%3A+";
+                result += "%5B";
+                for (var i = 0; i < valid_ability_items.length - 1; i++)
+                    result += "%22" + encodeURIComponent(valid_ability_items[i]) + "%22%2C";
+                result += "%22" + encodeURIComponent(valid_ability_items[i]) + "%22";
+                result += "%5D%2C%0D%0A";
+            }
 
             const income = document.getElementById("income").value;
             const income_description = document.getElementById("income_description").value;
