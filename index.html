@@ -85,9 +85,10 @@
         <input id="ability_item4_recombobulated" type="checkbox" /><label for="ability_item4_recombobulated">Rarity Upgrade</label><br>
         <hr>
         <h3>Hourly Income</h3>
-        <input id="income" placeholder="Hourly Income" list="ability_item_list" /><br>
+        <input id="income_description" placeholder="Money Strategy" />
+        <input id="income" placeholder="Income Per Hour" /><br>
         <h3>Initial Setup Cost</h3>
-        <input id="cost" placeholder="Initial Setup Cost" list="ability_item_list" /><br>
+        <input id="cost" placeholder="Initial Setup Cost" /><br>
 
         <hr>
         <h3>Notes</h3>
@@ -730,7 +731,6 @@
             return itemName[0] + rarityOrder[rarityOrder.indexOf(itemName[1]) + 1] + itemName.slice(2);
         }
 
-        // TODO implement isValidReforge
         function isValidReforge(itemName, selectedReforge) {
             const reforges = {
                 SWORD: ["Dirty", "Fabled", "Suspicious", "Gilded", "Warped", "Bulky", "Gentle", "Odd", "Fast", "Fair", "Epic", "Sharp", "Heroic", "Spicy", "Legendary"],
@@ -813,6 +813,7 @@
                 result += "%22" + encodeURIComponent(helmet) + "%22";
                 result += "%2C%0D%0A";
             }
+
             var chestplate = document.getElementById("chestplate").value;
             const chestplate_reforge = document.getElementById("chestplate_reforge").value;
             const chestplate_upgrades = document.getElementById("chestplate_upgrades").value;
@@ -839,6 +840,7 @@
                 result += "%22" + encodeURIComponent(chestplate) + "%22";
                 result += "%2C%0D%0A";
             }
+
             var leggings = document.getElementById("leggings").value;
             const leggings_reforge = document.getElementById("leggings_reforge").value;
             const leggings_upgrades = document.getElementById("leggings_upgrades").value;
@@ -865,6 +867,7 @@
                 result += "%22" + encodeURIComponent(leggings) + "%22";
                 result += "%2C%0D%0A";
             }
+
             var boots = document.getElementById("boots").value;
             const boots_reforge = document.getElementById("boots_reforge").value;
             const boots_upgrades = document.getElementById("boots_upgrades").value;
@@ -946,7 +949,6 @@
             }
 
             // TODO build and validate the data for submission
-            // encodeURIComponent(JSON.stringify(result).slice(1, -1)),
 
             var min_skill1 = document.getElementById("min_skill1").value;
             var min_skill2 = document.getElementById("min_skill2").value;
@@ -972,15 +974,29 @@
             result += "%22" + encodeURIComponent(ability_item4) + "%22";
             result += "%5D%2C%0D%0A";
 
-            var income = document.getElementById("income").value;
-            result += "%22income%22%3A+";
-            result += "%22" + encodeURIComponent(income) + "%22";
-            result += "%2C%0D%0A";
+            const income = document.getElementById("income").value;
+            const income_description = document.getElementById("income_description").value;
+            if (!/[0-9]{1,3}(.[0-9])?[kmb]?/.test(income)) {
+                document.getElementById("status").innerHTML = "'Income Per Hour' is invalid! Valid examples would be '3', '1.6m' or '100k'.";
+                return;
+            } else if (income_description === "") {
+                document.getElementById("status").innerHTML = "'Money Strategy' is missing!";
+                return;
+            } else {
+                result += "%22income%22%3A+";
+                result += "%22" + encodeURIComponent(income_description + " - " + income + " coins/h") + "%22";
+                result += "%2C%0D%0A";
+            }
 
-            var cost = document.getElementById("cost").value;
-            result += "%22cost%22%3A+";
-            result += "%22" + encodeURIComponent(cost) + "%22";
-            result += "%2C";
+            const cost = document.getElementById("cost").value;
+            if (!/[0-9]{1,3}(.[0-9])?[kmb]?/.test(cost)) {
+                document.getElementById("status").innerHTML = "'Initial Setup Cost' is invalid! Valid examples would be '3', '1.6m' or '100k'.";
+                return;
+            } else {
+                result += "%22cost%22%3A+";
+                result += "%22" + encodeURIComponent(cost + " coins") + "%22";
+                result += "%2C";
+            }
 
 
             const path = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfo_YODrIHaz29amZ5XmvMlYEG-SZmbFsSBP9r2UJhgp4Ow5w/formResponse?";
