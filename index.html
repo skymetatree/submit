@@ -681,22 +681,22 @@
                 const name = getItemTier(item.tier) + item.name;
                 const category = item.category;
                 if (category === "HELMET") {
-                    const tmp_name = name.replace(/( Helmet)|(Helmet of the )|(Helmet of )|( -)|(Helmet Of )/, "");
+                    const tmp_name = name.replace(/( Helmet)|(Helmet of the )|(Helmet of )|( -)|(Helmet Of )|('s Helmet)/, "");
                     addToDatalist("helmets_list", tmp_name);
                     skyblock_helmets[tmp_name] = item;
                 }
                 if (category === "CHESTPLATE") {
-                    const tmp_name = name.replace(/( Chestplate)|(Chestplate of the )|(Chestplate of )|( -)|(Chestplate Of )/, "");
+                    const tmp_name = name.replace(/( Chestplate)|(Chestplate of the )|(Chestplate of )|( -)|(Chestplate Of )|('s Chestplate)/, "");
                     addToDatalist("chestplates_list", tmp_name);
                     skyblock_chestplates[tmp_name] = item;
                 }
                 if (category === "LEGGINGS") {
-                    const tmp_name = name.replace(/( Leggings)|(Leggings of the )|(Leggings of )|( -)|(Leggings Of )/, "");
+                    const tmp_name = name.replace(/( Leggings)|(Leggings of the )|(Leggings of )|( -)|(Leggings Of )|('s Leggings)/, "");
                     addToDatalist("leggings_list", tmp_name);
                     skyblock_leggings[tmp_name] = item;
                 }
                 if (category === "BOOTS") {
-                    const tmp_name = name.replace(/( Boots)|(Boots of the )|(Boots of )|( -)|(Boots Of )/, "");
+                    const tmp_name = name.replace(/( Boots)|(Boots of the )|(Boots of )|( -)|(Boots Of )|('s Boots)/, "");
                     addToDatalist("boots_list", tmp_name);
                     skyblock_boots[tmp_name] = item;
                 }
